@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sevenwonders.controller.SetUpPlayerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.sevenwonders.SetUpPlayerController">
    <children>
       <Label contentDisplay="CENTER" layoutX="408.0" layoutY="376.0" prefHeight="18.0" prefWidth="199.0" text="Choissisez le nombre de joueurs" />
       <TextField fx:id="theTextField" layoutX="343.0" layoutY="335.0" prefHeight="26.0" prefWidth="337.0" />

@@ -1,4 +1,4 @@
-package com.sevenwonders.controller;
+package controller.sevenwonders;
 
 import com.sevenwonders.Game;
 import com.sevenwonders.GameMaster;

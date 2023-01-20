@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import com.sevenwonders.controller.LauncherViewController;
+import controller.sevenwonders.LauncherViewController;
 
 /**
  * JavaFX App
