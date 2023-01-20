@@ -10,12 +10,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class GameController {
+public class ControllerGame {
     private List<Subscriber> subscribers = new ArrayList<>();
     private Game game ; 
     private static Scene scene; 
 
-    public GameController(Game game){
+    public ControllerGame(Game game){
         this.game = game ; 
         this.game.setGameController(this);  
     }
@@ -50,7 +50,7 @@ public class GameController {
      * @throws IOException
      */
 
-    public static void setScene(Stage stage, Game game, GameController gameController) throws IOException {
+    public static void setScene(Stage stage, Game game, ControllerGame gameController) throws IOException {
         ControllerSetUpPlayer setUpPlayer = new ControllerSetUpPlayer();
         setUpPlayer.setGameController(gameController);
         gameController.subscribe(setUpPlayer);
@@ -66,5 +66,9 @@ public class GameController {
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
+    }
+
+    public void receivePlayerNumber(String nbPlayerText) {
+        this.game.setPlayerNumber(nbPlayerText); 
     }
 }

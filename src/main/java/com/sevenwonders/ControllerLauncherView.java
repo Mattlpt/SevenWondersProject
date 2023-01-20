@@ -14,7 +14,7 @@ import javafx.scene.control.ListCell;
 
 public class ControllerLauncherView extends Stage implements Subscriber{
 
-    private GameController gameController;
+    private ControllerGame gameController;
     private Scene mainScene;
     
     private App app;
@@ -36,7 +36,7 @@ public class ControllerLauncherView extends Stage implements Subscriber{
         this.setScene(mainScene);
     }
 
-    public void setGameController(GameController gameController){this.gameController = gameController;}
+    public void setGameController(ControllerGame gameController){this.gameController = gameController;}
 
     @Override
     public void update(Game game) {
@@ -47,7 +47,7 @@ public class ControllerLauncherView extends Stage implements Subscriber{
     private void updateComponents() {}
 
     public void onButtonClick() throws IOException{
-        GameController.setScene(null, game, gameController);
+        ControllerGame.setScene(null, game, gameController);
         this.close();
     }
 

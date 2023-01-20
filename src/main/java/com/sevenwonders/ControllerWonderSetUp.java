@@ -4,7 +4,7 @@ import javafx.scene.Scene;
 
 public class ControllerWonderSetUp {
 
-    private GameController gameController;
+    private ControllerGame gameController;
     private Game game; 
     private Scene wonderSetUp;
 
