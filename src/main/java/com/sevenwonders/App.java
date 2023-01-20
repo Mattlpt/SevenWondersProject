@@ -17,8 +17,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        ControllerGame gameController = new ControllerGame(new Game(null)); 
-        ControllerLauncherView launcherView = new ControllerLauncherView();
+        GameMaster gameController = new GameMaster(new Game()); 
+        LauncherViewController launcherView = new LauncherViewController();
         launcherView.setGameController(gameController);
         gameController.subscribe(launcherView);
 

@@ -2,13 +2,13 @@ package com.sevenwonders;
 
 import javafx.scene.Scene;
 
-public class ControllerWonderSetUp {
+public class WonderSetUpController {
 
-    private ControllerGame gameController;
+    private GameMaster gameController;
     private Game game; 
     private Scene wonderSetUp;
 
-    public ControllerWonderSetUp(){
+    public WonderSetUpController(){
 
     }
     

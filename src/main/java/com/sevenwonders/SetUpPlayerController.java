@@ -10,9 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class ControllerSetUpPlayer extends Stage implements Subscriber {
+public class SetUpPlayerController extends Stage implements Subscriber {
 
-    private ControllerGame gameController;
+    private GameMaster gameController;
     private Game game; 
     private Scene setUpPlayerScene;
     
@@ -25,7 +25,7 @@ public class ControllerSetUpPlayer extends Stage implements Subscriber {
     @FXML
     Button theButton;
 
-    public ControllerSetUpPlayer() throws IOException {
+    public SetUpPlayerController() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SetUpPlayer.fxml"));
         fxmlLoader.setControllerFactory(type -> this);
         setUpPlayerScene = new Scene(fxmlLoader.load());
@@ -33,7 +33,7 @@ public class ControllerSetUpPlayer extends Stage implements Subscriber {
         this.setScene(setUpPlayerScene);
     }
 
-    public void setGameController(ControllerGame gameController){this.gameController = gameController;}
+    public void setGameController(GameMaster gameController){this.gameController = gameController;}
 
     @Override
     public void update(Game game) {

@@ -10,14 +10,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class ControllerGame {
+public class GameMaster {
     private List<Subscriber> subscribers = new ArrayList<>();
     private Game game ; 
     private static Scene scene; 
 
-    public ControllerGame(Game game){
-        this.game = game ; 
-        this.game.setGameController(this);  
+    public GameMaster(Game game){
+        this.game = game ;
     }
 
     /**
@@ -50,8 +49,8 @@ public class ControllerGame {
      * @throws IOException
      */
 
-    public void setScene(Stage stage, Game game, ControllerGame gameController) throws IOException {
-        ControllerSetUpPlayer setUpPlayer = new ControllerSetUpPlayer();
+    public void setScene(Stage stage, Game game, GameMaster gameController) throws IOException {
+        SetUpPlayerController setUpPlayer = new SetUpPlayerController();
         setUpPlayer.setGameController(gameController);
         gameController.subscribe(setUpPlayer);
 

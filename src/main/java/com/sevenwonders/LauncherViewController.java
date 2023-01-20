@@ -12,9 +12,9 @@ import javafx.stage.Stage;
 
 import javafx.scene.control.ListCell;
 
-public class ControllerLauncherView extends Stage implements Subscriber{
+public class LauncherViewController extends Stage implements Subscriber{
 
-    private ControllerGame gameController;
+    private GameMaster gameController;
     private Scene mainScene;
     
     private App app;
@@ -28,7 +28,7 @@ public class ControllerLauncherView extends Stage implements Subscriber{
 
     private Game game;
 
-    public ControllerLauncherView() throws IOException{
+    public LauncherViewController() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Launcher.fxml"));
         fxmlLoader.setControllerFactory(type -> this);
         mainScene = new Scene(fxmlLoader.load());
@@ -36,7 +36,7 @@ public class ControllerLauncherView extends Stage implements Subscriber{
         this.setScene(mainScene);
     }
 
-    public void setGameController(ControllerGame gameController){this.gameController = gameController;}
+    public void setGameController(GameMaster gameController){this.gameController = gameController;}
 
     @Override
     public void update(Game game) {

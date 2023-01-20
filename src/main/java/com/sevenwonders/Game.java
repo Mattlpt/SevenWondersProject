@@ -1,21 +1,17 @@
 package com.sevenwonders;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private ControllerGame gameController; 
-    private List<Player> playerList = new LinkedList(); 
 
-    public Game(List playerList){
-        this.playerList = playerList; 
+    private List<Player> playerList = new ArrayList(); 
+
+    public Game(){
     }
 
     public List getPlayerList(){return this.playerList;}
     public void setPlayerList(List playeList){this.playerList = playeList;}
-
-    public ControllerGame getGameController(){return this.gameController;}
-    public void setGameController(ControllerGame gameController){this.gameController = gameController; }
 
     public void setPlayerNumber(String nbPlayerText) {
         int nbPlayerInt =Integer.parseInt(nbPlayerText);  
