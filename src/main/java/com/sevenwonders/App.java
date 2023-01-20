@@ -17,7 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        GameMaster gameController = new GameMaster(new Game()); 
+        GameMaster gameController = new GameMaster(new Game()); //Initialise le game master et son argulement le model "game"
         LauncherViewController launcherView = new LauncherViewController();
         launcherView.setGameController(gameController);
         gameController.subscribe(launcherView);

@@ -61,7 +61,7 @@ public class LauncherViewController extends Stage implements Subscriber{
      *  Appel setScene (Afficher une scène) dans la classe Game Master
      */
     public void onButtonClick() throws IOException{
-        this.gameController.setScene(null, game, gameController);
+        this.gameController.setSceneSetUpPlayer(null, game, gameController);
         this.close();
     }
 
