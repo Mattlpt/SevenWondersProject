@@ -1,4 +1,4 @@
-package controller.sevenwonders;
+package com.sevenwonders.controller;
 
 import java.io.IOException;
 
