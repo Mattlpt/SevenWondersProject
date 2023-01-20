@@ -11,6 +11,12 @@ import javafx.stage.Stage;
 
 
 public class GameMaster {
+
+    /*
+     *  Game Master ; le coeur du jeu. 
+     *  c'est ici qu'on lieu les implémentations 
+     */
+
     private List<Subscriber> subscribers = new ArrayList<>();
     private Game game ; 
     private static Scene scene; 
