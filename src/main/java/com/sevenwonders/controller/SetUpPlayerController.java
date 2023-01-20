@@ -1,6 +1,12 @@
-package com.sevenwonders;
+package com.sevenwonders.controller;
 
 import java.io.IOException;
+
+import com.sevenwonders.App;
+import com.sevenwonders.Game;
+import com.sevenwonders.GameMaster;
+import com.sevenwonders.Subscriber;
+import com.sevenwonders.view.WonderSetUpView;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +18,7 @@ import javafx.stage.Stage;
 
 public class SetUpPlayerController extends Stage implements Subscriber {
 
-    private GameMaster gameMaster;
+    private GameMaster gameController;
     private Game game; 
     private Scene setUpPlayerScene;
     
@@ -33,30 +39,20 @@ public class SetUpPlayerController extends Stage implements Subscriber {
         this.setScene(setUpPlayerScene);
     }
 
-    /*
-     *  Déclare le controller 
-     */
-    public void setGameController(GameMaster gameMaster){this.gameMaster = gameMaster;}
+    public void setGameController(GameMaster gameController){this.gameController = gameController;}
 
-    /*
-     *  Update ; met à jour les donnée du jeu sur la vue 
-     */
     @Override
     public void update(Game game) {
         this.game = game ;
         updateComponents(); 
     }
 
-    /*
-     *  Action du bouton 
-     * 
-     *  "getText()" -> reçoit la chaine de caractère entrée dans le text field
-     *  Appel la fonction "receivePlayerNumber" dans Game Master
-     *  Appel setScene (Afficher une scène) dans la classe Game Master [non fait]
-     */
     @FXML
     protected void onButtonClickContinue(){
-        gameMaster.receivePlayerNumber(theTextField.getText());
+        gameController.receivePlayerNumber(theTextField.getText());
+        WonderSetUpView wonderSetUpView = new WonderSetUpView();
+        wonderSetUpView.show();
+
     }
 
     private void updateComponents() {

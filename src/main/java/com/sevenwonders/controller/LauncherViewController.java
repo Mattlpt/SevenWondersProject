@@ -1,6 +1,11 @@
-package com.sevenwonders;
+package com.sevenwonders.controller;
 
 import java.io.IOException;
+
+import com.sevenwonders.App;
+import com.sevenwonders.Game;
+import com.sevenwonders.GameMaster;
+import com.sevenwonders.Subscriber;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

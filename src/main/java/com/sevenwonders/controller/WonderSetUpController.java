@@ -1,4 +1,7 @@
-package com.sevenwonders;
+package com.sevenwonders.controller;
+
+import com.sevenwonders.Game;
+import com.sevenwonders.GameMaster;
 
 import javafx.scene.Scene;
 
