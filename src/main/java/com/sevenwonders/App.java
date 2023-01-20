@@ -17,14 +17,14 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        GameMaster gameController = new GameMaster(new Game()); //Initialise le game master et son argulement le model "game"
+        GameMaster gameMaster = new GameMaster(new Game()); //Initialise le game master et son argulement le model "game"
         LauncherViewController launcherView = new LauncherViewController();
-        launcherView.setGameController(gameController);
-        gameController.subscribe(launcherView);
+        launcherView.setGameMaster(gameMaster);
+        gameMaster.subscribe(launcherView);
 
         launcherView.show();
 
-        gameController.notifySubscribers();
+        gameMaster.notifySubscribers();
     }
 
     public static void main(String[] args) {

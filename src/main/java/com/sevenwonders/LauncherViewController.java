@@ -18,7 +18,7 @@ public class LauncherViewController extends Stage implements Subscriber{
      *  LauncherViewController ; Controller de la vue Launcher
      */
 
-    private GameMaster gameController;
+    private GameMaster gameMaster;
     private Scene mainScene;
     
     private App app;
@@ -46,7 +46,7 @@ public class LauncherViewController extends Stage implements Subscriber{
     /*
      *  Déclare le controller 
      */
-    public void setGameController(GameMaster gameController){this.gameController = gameController;}
+    public void setGameMaster(GameMaster gameMaster){this.gameMaster = gameMaster;}
 
     @Override
     public void update(Game game) {
@@ -61,7 +61,7 @@ public class LauncherViewController extends Stage implements Subscriber{
      *  Appel setSceneSetUpPlayer (Afficher une scène) dans la classe Game Master
      */
     public void onButtonClick() throws IOException{
-        this.gameController.setSceneSetUpPlayer(null, game, gameController);
+        this.gameMaster.setSceneSetUpPlayer(null, game, gameMaster);
         this.close();
     }
 
