@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public class SetUpPlayerController extends Stage implements Subscriber {
 
-    private GameMaster gameController;
+    private GameMaster gameMaster;
     private Game game; 
     private Scene setUpPlayerScene;
     
@@ -36,7 +36,7 @@ public class SetUpPlayerController extends Stage implements Subscriber {
     /*
      *  Déclare le controller 
      */
-    public void setGameController(GameMaster gameController){this.gameController = gameController;}
+    public void setGameController(GameMaster gameMaster){this.gameMaster = gameMaster;}
 
     /*
      *  Update ; met à jour les donnée du jeu sur la vue 
@@ -56,7 +56,7 @@ public class SetUpPlayerController extends Stage implements Subscriber {
      */
     @FXML
     protected void onButtonClickContinue(){
-        gameController.receivePlayerNumber(theTextField.getText());
+        gameMaster.receivePlayerNumber(theTextField.getText());
     }
 
     private void updateComponents() {
