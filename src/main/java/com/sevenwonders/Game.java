@@ -5,6 +5,10 @@ import java.util.List;
 
 public class Game {
 
+    /*
+     *  Game ; model du jeu 
+     */
+
     private List<Player> playerList = new ArrayList(); 
 
     public Game(){
