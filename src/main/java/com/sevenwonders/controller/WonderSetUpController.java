@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 
 public class WonderSetUpController {
 
-    private GameMaster gameController;
+    private GameMaster gameMaster;
     private Game game; 
     private Scene wonderSetUp;
 

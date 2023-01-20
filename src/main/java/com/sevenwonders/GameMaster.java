@@ -13,6 +13,12 @@ import javafx.stage.Stage;
 
 
 public class GameMaster {
+
+    /*
+     *  Game Master ; le coeur du jeu. 
+     *  c'est ici qu'on lieu les implémentations 
+     */
+
     private List<Subscriber> subscribers = new ArrayList<>();
     private Game game ; 
     private static Scene scene; 
@@ -51,13 +57,17 @@ public class GameMaster {
      * @throws IOException
      */
 
-    public void setScene(Stage stage, Game game, GameMaster gameController) throws IOException {
+
+     /*
+      *  setSceneSetUpPlayer ; 
+      */
+    public void setSceneSetUpPlayer(Stage stage, Game game, GameMaster gameMaster) throws IOException {
         SetUpPlayerController setUpPlayer = new SetUpPlayerController();
-        setUpPlayer.setGameController(gameController);
-        gameController.subscribe(setUpPlayer);
+        setUpPlayer.setGameController(gameMaster);
+        gameMaster.subscribe(setUpPlayer);
 
         setUpPlayer.show(); 
-        gameController.notifySubscribers();
+        gameMaster.notifySubscribers();
     }
     
     static void setRoot(String fxml) throws IOException {

@@ -19,7 +19,11 @@ import javafx.scene.control.ListCell;
 
 public class LauncherViewController extends Stage implements Subscriber{
 
-    private GameMaster gameController;
+    /*
+     *  LauncherViewController ; Controller de la vue Launcher
+     */
+
+    private GameMaster gameMaster;
     private Scene mainScene;
     
     private App app;
@@ -33,6 +37,9 @@ public class LauncherViewController extends Stage implements Subscriber{
 
     private Game game;
 
+    /*
+     *  Charge la page FXML
+     */
     public LauncherViewController() throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Launcher.fxml"));
         fxmlLoader.setControllerFactory(type -> this);
@@ -41,7 +48,10 @@ public class LauncherViewController extends Stage implements Subscriber{
         this.setScene(mainScene);
     }
 
-    public void setGameController(GameMaster gameController){this.gameController = gameController;}
+    /*
+     *  Déclare le controller 
+     */
+    public void setGameMaster(GameMaster gameMaster){this.gameMaster = gameMaster;}
 
     @Override
     public void update(Game game) {
@@ -51,8 +61,12 @@ public class LauncherViewController extends Stage implements Subscriber{
 
     private void updateComponents() {}
 
+    /*
+     *  Action du bouton 
+     *  Appel setSceneSetUpPlayer (Afficher une scène) dans la classe Game Master
+     */
     public void onButtonClick() throws IOException{
-        this.gameController.setScene(null, game, gameController);
+        this.gameMaster.setSceneSetUpPlayer(null, game, gameMaster);
         this.close();
     }
 

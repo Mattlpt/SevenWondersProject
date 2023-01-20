@@ -5,6 +5,10 @@ import java.util.List;
 
 public class Game {
 
+    /*
+     *  Game ; model du jeu 
+     */
+
     private List<Player> playerList = new ArrayList(); 
 
     public Game(){
@@ -13,6 +17,9 @@ public class Game {
     public List getPlayerList(){return this.playerList;}
     public void setPlayerList(List playeList){this.playerList = playeList;}
 
+    /*
+     *  setPlayerNumber ; règle le nombre de joueur 
+     */
     public void setPlayerNumber(String nbPlayerText) {
         int nbPlayerInt =Integer.parseInt(nbPlayerText);  
         if(nbPlayerInt > 1 && nbPlayerInt < 8){
