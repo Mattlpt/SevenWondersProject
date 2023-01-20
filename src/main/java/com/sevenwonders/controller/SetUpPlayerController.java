@@ -1,6 +1,11 @@
-package com.sevenwonders;
+package com.sevenwonders.controller;
 
 import java.io.IOException;
+
+import com.sevenwonders.App;
+import com.sevenwonders.Game;
+import com.sevenwonders.GameMaster;
+import com.sevenwonders.Subscriber;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,12 +15,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import javafx.scene.control.ListCell;
-
-public class LauncherViewController extends Stage implements Subscriber{
+public class SetUpPlayerController extends Stage implements Subscriber {
 
     private GameMaster gameController;
-    private Scene mainScene;
+    private Game game; 
+    private Scene setUpPlayerScene;
     
     private App app;
 
@@ -26,14 +30,12 @@ public class LauncherViewController extends Stage implements Subscriber{
     @FXML
     Button theButton;
 
-    private Game game;
-
-    public LauncherViewController() throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Launcher.fxml"));
+    public SetUpPlayerController() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SetUpPlayer.fxml"));
         fxmlLoader.setControllerFactory(type -> this);
-        mainScene = new Scene(fxmlLoader.load());
+        setUpPlayerScene = new Scene(fxmlLoader.load());
         this.setTitle("Launcher");
-        this.setScene(mainScene);
+        this.setScene(setUpPlayerScene);
     }
 
     public void setGameController(GameMaster gameController){this.gameController = gameController;}
@@ -44,13 +46,12 @@ public class LauncherViewController extends Stage implements Subscriber{
         updateComponents(); 
     }
 
-    private void updateComponents() {}
-
-    public void onButtonClick() throws IOException{
-        this.gameController.setScene(null, game, gameController);
-        this.close();
+    @FXML
+    protected void onButtonClickContinue(){
+        gameController.receivePlayerNumber(theTextField.getText());
     }
 
-
+    private void updateComponents() {
+    }
 
 }
