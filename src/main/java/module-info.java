@@ -5,4 +5,5 @@ module com.sevenwonders {
     opens com.sevenwonders.controller to javafx.fxml;
     exports com.sevenwonders.controller;
     exports com.sevenwonders;
+    exports com.sevenwonders.view;
 }
