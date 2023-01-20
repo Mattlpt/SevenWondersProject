@@ -6,6 +6,7 @@ import com.sevenwonders.App;
 import com.sevenwonders.Game;
 import com.sevenwonders.GameMaster;
 import com.sevenwonders.Subscriber;
+import com.sevenwonders.view.WonderSetUpView;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,6 +50,9 @@ public class SetUpPlayerController extends Stage implements Subscriber {
     @FXML
     protected void onButtonClickContinue(){
         gameController.receivePlayerNumber(theTextField.getText());
+        WonderSetUpView wonderSetUpView = new WonderSetUpView();
+        wonderSetUpView.show();
+
     }
 
     private void updateComponents() {
