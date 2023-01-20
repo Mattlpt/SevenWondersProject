@@ -47,7 +47,7 @@ public class ControllerLauncherView extends Stage implements Subscriber{
     private void updateComponents() {}
 
     public void onButtonClick() throws IOException{
-        ControllerGame.setScene(null, game, gameController);
+        this.gameController.setScene(null, game, gameController);
         this.close();
     }
 

@@ -42,7 +42,7 @@ public class ControllerSetUpPlayer extends Stage implements Subscriber {
     }
 
     @FXML
-    protected void onButtonClick(){
+    protected void onButtonClickContinue(){
         gameController.receivePlayerNumber(theTextField.getText());
     }
 

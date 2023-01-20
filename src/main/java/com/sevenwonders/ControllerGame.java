@@ -50,7 +50,7 @@ public class ControllerGame {
      * @throws IOException
      */
 
-    public static void setScene(Stage stage, Game game, ControllerGame gameController) throws IOException {
+    public void setScene(Stage stage, Game game, ControllerGame gameController) throws IOException {
         ControllerSetUpPlayer setUpPlayer = new ControllerSetUpPlayer();
         setUpPlayer.setGameController(gameController);
         gameController.subscribe(setUpPlayer);
