@@ -14,9 +14,12 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.File;
+import java.io.IOException;
 
 import com.sevenwonders.Game;
+import com.sevenwonders.GameMaster;
 import com.sevenwonders.Subscriber;
+import com.sevenwonders.controller.LauncherViewController;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -35,8 +38,10 @@ public class LauncherView extends Stage implements Subscriber{
     public final ImageView imageView = new ImageView(image); 
     BackgroundImage backgroundImage = new BackgroundImage(image, null, null, null, null);
     public Timeline timelineMouseExit;
+
+    LauncherViewController controller; 
     
-    public LauncherView(){
+    public LauncherView() throws IOException{
 
         
          //Bouton
@@ -66,10 +71,16 @@ public class LauncherView extends Stage implements Subscriber{
          this.timelineMouseExit.getKeyFrames().add(this.kF2);
          this.startButton.setOnMouseExited(event -> {this.timelineMouseExit.play();});
         
- 
-         this.startButton.setOnAction(e -> {
+        this.controller = new LauncherViewController();
 
-         });
+        this.startButton.setOnAction(e -> {
+            try {
+                this.controller.onButtonClick();
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        });
 
  
          this.imageView.setFitHeight(1.0);
@@ -86,5 +97,8 @@ public class LauncherView extends Stage implements Subscriber{
     public void update(Game game) {
         // TODO Auto-generated method stub
         
+    }
+
+    public void setGameMaster(GameMaster gameMaster) {
     }
 }

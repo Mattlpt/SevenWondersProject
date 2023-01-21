@@ -6,6 +6,7 @@ import com.sevenwonders.App;
 import com.sevenwonders.Game;
 import com.sevenwonders.GameMaster;
 import com.sevenwonders.Subscriber;
+import com.sevenwonders.view.PlayerSetUpView;
 import com.sevenwonders.view.WonderSetUpView;
 
 import javafx.fxml.FXML;
@@ -32,11 +33,14 @@ public class SetUpPlayerController extends Stage implements Subscriber {
     Button theButton;
 
     public SetUpPlayerController() throws IOException {
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SetUpPlayer.fxml"));
         fxmlLoader.setControllerFactory(type -> this);
         setUpPlayerScene = new Scene(fxmlLoader.load());
         this.setTitle("Launcher");
         this.setScene(setUpPlayerScene);
+
+
     }
 
     public void setGameController(GameMaster gameController){this.gameController = gameController;}

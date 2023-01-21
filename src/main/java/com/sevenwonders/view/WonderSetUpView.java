@@ -67,6 +67,7 @@ public class WonderSetUpView extends Stage{
         this.confirmButton.setOnAction(e -> {
 
         });
+        
         this.confirmBox = new HBox();
         this.confirmBox.setAlignment(Pos.CENTER);
         this.confirmBox.setPadding(new Insets(0,0,30,0)); 

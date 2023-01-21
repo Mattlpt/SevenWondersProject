@@ -6,7 +6,11 @@ import com.sevenwonders.App;
 import com.sevenwonders.Game;
 import com.sevenwonders.GameMaster;
 import com.sevenwonders.Subscriber;
+import com.sevenwonders.view.LauncherView;
+import com.sevenwonders.view.PlayerSetUpView;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -46,6 +50,9 @@ public class LauncherViewController extends Stage implements Subscriber{
         mainScene = new Scene(fxmlLoader.load());
         this.setTitle("Launcher");
         this.setScene(mainScene);
+
+        // LauncherView launcherView = new LauncherView();
+        // launcherView.show();
     }
 
     /*
@@ -68,6 +75,10 @@ public class LauncherViewController extends Stage implements Subscriber{
     public void onButtonClick() throws IOException{
         this.gameMaster.setSceneSetUpPlayer(null, game, gameMaster);
         this.close();
+    }
+
+    public void onButtonStartClick() throws IOException{
+       this.gameMaster.setSceneSetUpPlayer(null, game, gameMaster);
     }
 
 

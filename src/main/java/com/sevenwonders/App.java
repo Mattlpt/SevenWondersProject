@@ -22,10 +22,11 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         GameMaster gameMaster = new GameMaster(new Game()); //Initialise le game master et son argulement le model "game"
 
-        // LauncherViewController launcherView = new LauncherViewController();
-        // launcherView.setGameMaster(gameMaster);
+        LauncherViewController launcherView = new LauncherViewController();
+        launcherView.setGameMaster(gameMaster);
 
-        LauncherView launcherView = new LauncherView(); 
+        // LauncherView launcherView = new LauncherView(); 
+        // launcherView.setGameMaster(gameMaster);
 
         gameMaster.subscribe(launcherView);
 
