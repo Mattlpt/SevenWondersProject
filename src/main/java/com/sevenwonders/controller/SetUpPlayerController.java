@@ -50,6 +50,9 @@ public class SetUpPlayerController extends Stage implements Subscriber {
     @FXML
     protected void onButtonClickContinue(){
         gameController.receivePlayerNumber(theTextField.getText());
+        /*
+         * Affiche la page "wonderSetUp" qui est une vue JavaFX
+         */
         WonderSetUpView wonderSetUpView = new WonderSetUpView();
         wonderSetUpView.show();
 

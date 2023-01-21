@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import com.sevenwonders.controller.LauncherViewController;
+import com.sevenwonders.view.LauncherView;
 
 /**
  * JavaFX App
@@ -20,8 +21,12 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         GameMaster gameMaster = new GameMaster(new Game()); //Initialise le game master et son argulement le model "game"
-        LauncherViewController launcherView = new LauncherViewController();
-        launcherView.setGameMaster(gameMaster);
+
+        // LauncherViewController launcherView = new LauncherViewController();
+        // launcherView.setGameMaster(gameMaster);
+
+        LauncherView launcherView = new LauncherView(); 
+
         gameMaster.subscribe(launcherView);
 
         launcherView.show();

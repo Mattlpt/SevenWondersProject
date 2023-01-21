@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.sevenwonders.Player;
 import com.sevenwonders.controller.WonderSetUpController;
+import com.sevenwonders.wonder.Wonder;
 
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
@@ -48,6 +49,8 @@ public class WonderSetUpView extends Stage{
     final ImageView imageView = new ImageView(image); 
     BackgroundImage backgroundImage = new BackgroundImage(image, null, null, null, null);
     FadeTransition fadeTransition;
+
+    private HBox hbox;
 
     public WonderSetUpView() {
         this.setScene(wonderSetUp);
@@ -108,54 +111,7 @@ public class WonderSetUpView extends Stage{
         this.layout.setCenter(this.mainBox);
         this.layout.setBackground(new Background(this.backgroundImage));  
         this.wonderSetUp = new Scene(this.layout, 1244, 700);
+
+        this.hbox = new HBox(); 
     }
-
-    public void setUpScene() {
-    //      ArrayList<Wonder> wonders = this.getWonders();
-    //     // this.title.setText(Model.getPlayers().get(0).getName()+" Choisssez votre merveille");
-    //     // for(int i=0; i<wonders.size(); i++) {
-
-    //         // Bouton de choix des merveilles 
-
-    //         Button button = new Button(wonders.get(i).getName());
-    //         button.setBackground(new Background(new BackgroundFill(wonders.get(i).getColor(), CornerRadii.EMPTY, Insets.EMPTY)));
-    //         button.setEffect(new Glow(0.3));
-    //         button.setEffect(new DropShadow(10, Color.BLACK));
-    //         button.setStyle("-fx-min-width: 180px -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-text-fill: white; ");
-    //         this.fadeTransition = new FadeTransition(Duration.millis(200), button); 
-    //         this.fadeTransition.setFromValue(0.5);
-    //         this.fadeTransition.setToValue(1.0);
-    //         button.setOnAction(new EventHandler<ActionEvent>() {
-
-    //             @Override
-    //             public void handle(ActionEvent event) {
-    //                 Button eventButton = (Button) event.getSource();
-    //                 HBox box = (HBox) eventButton.getParent().getParent();
-    //                 VBox box1 = null;
-    //                 VBox box2 = null;
-    //                 for(int i=0; i<box.getChildren().size(); i++) {
-    //                     if(box.getChildren().get(i).getId() == "wonderList") {
-    //                         box1 = (VBox) box.getChildren().get(i);
-    //                     }
-    //                     if(box.getChildren().get(i).getId() == "wonderChoice") {
-    //                         box2 = (VBox) box.getChildren().get(i);
-    //                     }
-    //                 }
-    //                 if(eventButton.getParent() == box1 && box2.getChildren().size() < 2) {
-    //                     box1.getChildren().remove(eventButton);
-    //                     box2.getChildren().add(eventButton);
-    //                     box2 = null;
-    //                 }
-    //                 if(eventButton.getParent() == box2) {
-    //                     box2.getChildren().remove(eventButton);
-    //                     box1.getChildren().add(eventButton);
-    //                 }
-    //             }
-                
-    //         });
-    //         this.wonderList.getChildren().add(button);
-    //     }
-    //     this.wonderList.getChildren().addAll();
-    }
-    
 }
