@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 import com.sevenwonders.Game;
+import com.sevenwonders.GameMaster;
 import com.sevenwonders.Player;
 import com.sevenwonders.Subscriber;
 import com.sevenwonders.controller.WonderSetUpController;
@@ -54,8 +55,9 @@ public class WonderSetUpView implements Subscriber {
 
     private HBox hbox;
 
-    public WonderSetUpView() {
-        
+    EventHandler<ActionEvent> controller;
+
+    public WonderSetUpView() { 
         
         this.confirmButton = new Button("Confirmer");
         this.confirmButton.setEffect(new Glow(0.3));
@@ -122,5 +124,15 @@ public class WonderSetUpView implements Subscriber {
     public void update(Game game) {
         // TODO Auto-generated method stub
         
+    }
+
+    public void setController(EventHandler<ActionEvent> eventHandler) {
+        this.controller = eventHandler;
+    }
+
+    @Override
+    public GameMaster getMaster() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

@@ -1,21 +1,40 @@
 package com.sevenwonders;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import com.sevenwonders.controller.LauncherViewController;
+import com.sevenwonders.controller.SetUpPlayerController;
+import com.sevenwonders.controller.WonderSetUpController;
+import com.sevenwonders.view.LauncherView;
+import com.sevenwonders.view.PlayerSetUpView;
+import com.sevenwonders.view.WonderSetUpView;
 
 public class Game implements Subscriber {
 
-    /*
-     *  Game ; model du jeu 
-     */
+    private ArrayList<Player> playerList;
+    
+    public LauncherView launcherView;
+    PlayerSetUpView playerSetUpView;
+    WonderSetUpView wonderSetUpView;
+    
+    LauncherViewController launcherViewController;
+    SetUpPlayerController setUpPlayerController;
+    WonderSetUpController wonderSetUpController;
 
-    private List<Player> playerList = new ArrayList(); 
+    public Game() {
+        this.playerList = new ArrayList<Player>();
 
-    public Game(){
+        this.launcherViewController = new LauncherViewController();
+        this.setUpPlayerController = new SetUpPlayerController();
+        this.wonderSetUpController = new WonderSetUpController();
+
+        this.launcherView = new LauncherView();
+        this.playerSetUpView = new PlayerSetUpView();
+        this.wonderSetUpView = new WonderSetUpView();
     }
 
-    public List getPlayerList(){return this.playerList;}
-    public void setPlayerList(List playeList){this.playerList = playeList;}
+    
+    
 
     /*
      *  setPlayerNumber ; règle le nombre de joueur 
@@ -39,5 +58,22 @@ public class Game implements Subscriber {
     public void update(Game game) {
         // TODO Auto-generated method stub
         
+    }
+
+    public void setPlayerList(ArrayList<Player> playerList) {
+        this.playerList = playerList;
+    }
+
+    public ArrayList<Player> getPlayerList() {
+        return this.playerList;
+    }
+
+
+
+
+    @Override
+    public GameMaster getMaster() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

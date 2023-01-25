@@ -4,28 +4,29 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sevenwonders.controller.SetUpPlayerController;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
 
 public class GameMaster {
 
-    /*
-     *  Game Master ; le coeur du jeu. 
-     *  c'est ici qu'on lieu les implémentations 
-     */
-
-    private List<Subscriber> subscribers = new ArrayList<>();
-    private Game game ; 
-    private static Scene scene; 
+    private List<Subscriber> subscribers;
+    private Game game ;
 
     public GameMaster(Game game){
         this.game = game ;
+        this.subscribers = new ArrayList<Subscriber>();
+        this.game.launcherView.setController(this.game.launcherViewController.getHandler());
+        this.game.playerSetUpView.setController(this.game.setUpPlayerController.getHandler());
+        this.game.wonderSetUpView.setController(this.game.wonderSetUpController.getHandler());
+        this.game.launcherViewController.setGameMaster(this);
     }
+
+
+
+
+
+
+
+
+
 
     /**
      * Adds a subscriber to the list
@@ -64,5 +65,9 @@ public class GameMaster {
 
     public void receivePlayerNumber(String nbPlayerText) {
         this.game.setPlayerNumber(nbPlayerText); 
+    }
+
+    public Game getGame() {
+        return this.game;
     }
 }

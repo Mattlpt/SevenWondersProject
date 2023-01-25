@@ -52,9 +52,9 @@ public class PlayerSetUpView implements Subscriber{
     final ImageView imageView = new ImageView(image); 
     BackgroundImage backgroundImage = new BackgroundImage(image, null, null, null, null);
 
-    public Scene playerSetUpView; 
+    private EventHandler<ActionEvent> controller; 
     
-    public PlayerSetUpView(){
+    public PlayerSetUpView() {
 
         //Titre 
         this.title = new Label("Selection des joueurs");
@@ -107,6 +107,16 @@ public class PlayerSetUpView implements Subscriber{
     public void update(Game game) {
         // TODO Auto-generated method stub
         
+    }
+
+    public void setController(EventHandler<ActionEvent> eventHandler) {
+        this.controller = eventHandler;
+    }
+
+    @Override
+    public GameMaster getMaster() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 

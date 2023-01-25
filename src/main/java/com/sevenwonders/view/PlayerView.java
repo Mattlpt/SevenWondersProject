@@ -1,6 +1,7 @@
 package com.sevenwonders.view;
 
 import com.sevenwonders.Game;
+import com.sevenwonders.GameMaster;
 import com.sevenwonders.Subscriber;
 
 import javafx.scene.layout.StackPane;
@@ -14,6 +15,12 @@ public class PlayerView implements Subscriber {
     public void update(Game game) {
         // TODO Auto-generated method stub
         
+    }
+
+    @Override
+    public GameMaster getMaster() {
+        // TODO Auto-generated method stub
+        return null;
     } 
     
     
