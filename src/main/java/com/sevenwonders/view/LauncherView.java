@@ -5,25 +5,23 @@ import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.io.File;
-import java.io.IOException;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 import com.sevenwonders.Game;
 import com.sevenwonders.GameMaster;
 import com.sevenwonders.Subscriber;
-import com.sevenwonders.controller.LauncherViewController;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
+
 
 public class LauncherView implements Subscriber{
 
@@ -39,10 +37,9 @@ public class LauncherView implements Subscriber{
     BackgroundImage backgroundImage = new BackgroundImage(image, null, null, null, null);
     public Timeline timelineMouseExit;
 
-    LauncherViewController controller; 
+    EventHandler<ActionEvent> controller; 
     
-    public LauncherView() throws IOException{
-
+    public LauncherView() {
         
          //Bouton
          this.startButton = new Button("Start");
@@ -70,6 +67,7 @@ public class LauncherView implements Subscriber{
          ); 
          this.timelineMouseExit.getKeyFrames().add(this.kF2);
          this.startButton.setOnMouseExited(event -> {this.timelineMouseExit.play();});
+         this.startButton.setOnAction(this.controller);
 
  
          this.imageView.setFitHeight(1.0);
@@ -86,10 +84,17 @@ public class LauncherView implements Subscriber{
         
     }
 
-    public void setGameMaster(GameMaster gameMaster) {
+    public void setController(EventHandler<ActionEvent> eventHandler) {
+        this.controller = eventHandler;
     }
 
     public Scene getScene() {
         return this.launcherView;
+    }
+
+    @Override
+    public GameMaster getMaster() {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
