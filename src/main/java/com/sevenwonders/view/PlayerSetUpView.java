@@ -32,7 +32,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class PlayerSetUpView extends Stage implements Subscriber{
+public class PlayerSetUpView implements Subscriber{
 
     public Scene playerSetUp;
     BorderPane layout;
@@ -100,7 +100,6 @@ public class PlayerSetUpView extends Stage implements Subscriber{
         this.layout.setBackground(new Background(this.backgroundImage2));
         this.playerSetUp = new Scene(this.layout, 1244, 700);
 
-        this.setScene(playerSetUpView);
         
     }
 

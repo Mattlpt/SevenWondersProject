@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class SetUpPlayerController extends Stage implements Subscriber {
+public class SetUpPlayerController implements Subscriber {
 
     private GameMaster gameController;
     private Game game; 
@@ -37,8 +37,7 @@ public class SetUpPlayerController extends Stage implements Subscriber {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SetUpPlayer.fxml"));
         fxmlLoader.setControllerFactory(type -> this);
         setUpPlayerScene = new Scene(fxmlLoader.load());
-        this.setTitle("Launcher");
-        this.setScene(setUpPlayerScene);
+        
 
 
     }
@@ -58,7 +57,6 @@ public class SetUpPlayerController extends Stage implements Subscriber {
          * Affiche la page "wonderSetUp" qui est une vue JavaFX
          */
         WonderSetUpView wonderSetUpView = new WonderSetUpView();
-        wonderSetUpView.show();
 
     }
 

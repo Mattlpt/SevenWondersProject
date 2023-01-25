@@ -61,35 +61,6 @@ public class GameMaster {
      /*
       *  setSceneSetUpPlayer ; 
       */
-    public void setSceneSetUpPlayer(Stage stage, Game game, GameMaster gameMaster) throws IOException {
-
-        SetUpPlayerController setUpPlayer = new SetUpPlayerController();
-        setUpPlayer.setGameController(gameMaster);
-        gameMaster.subscribe(setUpPlayer);
-
-        setUpPlayer.show(); 
-        gameMaster.notifySubscribers();
-
-        // SetUpPlayerController setUpPlayerController = new SetUpPlayerController();
-        // setUpPlayerController.setGameController(gameMaster);
-        // gameMaster.subscribe(setUpPlayerController);
-        
-    }
-
-    public void setSceneplayerSetUpView(Stage stage, Game game, GameMaster gameMaster) throws IOException{
-        
-        SetUpPlayerController setUpPlayerController = new SetUpPlayerController(); 
-        
-    }
-    
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
 
     public void receivePlayerNumber(String nbPlayerText) {
         this.game.setPlayerNumber(nbPlayerText); 

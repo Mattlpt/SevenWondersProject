@@ -3,7 +3,7 @@ package com.sevenwonders;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game {
+public class Game implements Subscriber {
 
     /*
      *  Game ; model du jeu 
@@ -33,5 +33,11 @@ public class Game {
                 }
             }
         }
+    }
+
+    @Override
+    public void update(Game game) {
+        // TODO Auto-generated method stub
+        
     }
 }

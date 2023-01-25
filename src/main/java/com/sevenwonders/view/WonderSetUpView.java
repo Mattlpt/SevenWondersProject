@@ -3,7 +3,9 @@ package com.sevenwonders.view;
 import java.io.File;
 import java.util.ArrayList;
 
+import com.sevenwonders.Game;
 import com.sevenwonders.Player;
+import com.sevenwonders.Subscriber;
 import com.sevenwonders.controller.WonderSetUpController;
 import com.sevenwonders.wonder.Wonder;
 
@@ -30,7 +32,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class WonderSetUpView extends Stage{
+public class WonderSetUpView implements Subscriber {
 
     ArrayList<Player> players;
     
@@ -53,7 +55,7 @@ public class WonderSetUpView extends Stage{
     private HBox hbox;
 
     public WonderSetUpView() {
-        this.setScene(wonderSetUp);
+        
         
         this.confirmButton = new Button("Confirmer");
         this.confirmButton.setEffect(new Glow(0.3));
@@ -114,5 +116,11 @@ public class WonderSetUpView extends Stage{
         this.wonderSetUp = new Scene(this.layout, 1244, 700);
 
         this.hbox = new HBox(); 
+    }
+
+    @Override
+    public void update(Game game) {
+        // TODO Auto-generated method stub
+        
     }
 }
