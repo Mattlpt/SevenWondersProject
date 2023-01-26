@@ -38,6 +38,8 @@ public class PlayerSetUpViewController implements Subscriber {
                 }catch(NumberFormatException e) {textField.setText(null);}
                 if(nb > 1 && nb < 8) {
                     getMaster().setPlayers(nb);
+                    getMaster().setWonders();
+                    getMaster().WonderSetUpViewSetUp();
                     window.setScene(getMaster().getGame().wonderSetUpView.getScene());
                 }
                 else {
