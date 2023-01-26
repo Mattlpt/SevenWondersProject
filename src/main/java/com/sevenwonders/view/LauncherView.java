@@ -20,10 +20,13 @@ import com.sevenwonders.Game;
 import com.sevenwonders.GameMaster;
 import com.sevenwonders.Subscriber;
 import com.sevenwonders.controller.LauncherViewController;
+import com.sevenwonders.controller.PlayerViewController;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 public class LauncherView extends Stage{
 
@@ -73,7 +76,30 @@ public class LauncherView extends Stage{
         
         this.controller = new LauncherViewController();
 
-        this.startButton.setOnAction(e -> {
+        // this.startButton.setOnAction(e -> {
+        // });
+
+        this.startButton.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event){
+                Game game = new Game();
+                PlayerViewController playerViewController = new PlayerViewController(game); 
+
+                PlayerView playerView = new PlayerView();
+
+                playerView.setController(playerViewController);
+                playerViewController.subscribe(playerView);
+
+                PlayerView playerView2 = new PlayerView();
+                playerView2.setController(playerViewController);
+                playerViewController.subscribe(playerView2);
+
+                playerView.show();
+                playerView2.show();
+
+                playerViewController.notifySubscribers();
+            }
+             
         });
 
  

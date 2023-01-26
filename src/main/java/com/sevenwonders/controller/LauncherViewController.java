@@ -41,6 +41,7 @@ public class LauncherViewController {
 
     private Game game;
 
+    
     public LauncherViewController(){
 
     }
