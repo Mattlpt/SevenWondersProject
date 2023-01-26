@@ -25,7 +25,7 @@ public class LauncherViewController implements Subscriber{
                 Button eventButton = (Button) event.getSource();
                 Scene scene = eventButton.getScene();
                 Stage window = (Stage) scene.getWindow();
-                window.setScene(gameMaster.getGame().launcherView.getScene());
+                window.setScene(getMaster().getGame().playerSetUpView.getScene());
             }          
         };
     }
@@ -41,6 +41,10 @@ public class LauncherViewController implements Subscriber{
 
     public EventHandler<ActionEvent> getHandler() {
         return this.eventHandler;
+    }
+
+    public GameMaster getMaster() {
+        return this.gameMaster;
     }
 
 }

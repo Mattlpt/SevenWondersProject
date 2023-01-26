@@ -29,5 +29,9 @@ public class WonderSetUpController {
     public EventHandler<ActionEvent> getHandler() {
         return this.eventHandler;
     }
+
+    public GameMaster getMaster() {
+        return this.gameMaster;
+    }
     
 }

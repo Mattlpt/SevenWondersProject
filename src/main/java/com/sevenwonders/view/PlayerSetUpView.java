@@ -86,9 +86,7 @@ public class PlayerSetUpView implements Subscriber{
         this.fadeTransition.setFromValue(0.5);
         this.fadeTransition.setToValue(6.0);
 
-        this.setUpButton.setOnAction(e -> {
-
-        });
+        this.setUpButton.setOnAction(this.controller);
 
         this.setUpBox = new VBox();
         this.setUpBox.getChildren().addAll(this.setUpLabel, this.setUpTextField, this.setUpButton);
@@ -108,5 +106,9 @@ public class PlayerSetUpView implements Subscriber{
     public void update(Game game) {
         // TODO Auto-generated method stub
         
+    }
+
+    public Scene getScene() {
+        return this.playerSetUp;
     }
 }

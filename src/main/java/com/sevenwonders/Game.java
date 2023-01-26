@@ -3,7 +3,7 @@ package com.sevenwonders;
 import java.util.ArrayList;
 
 import com.sevenwonders.controller.LauncherViewController;
-import com.sevenwonders.controller.SetUpPlayerController;
+import com.sevenwonders.controller.PlayerSetUpViewController;
 import com.sevenwonders.controller.WonderSetUpController;
 import com.sevenwonders.view.LauncherView;
 import com.sevenwonders.view.PlayerSetUpView;
@@ -19,14 +19,14 @@ public class Game implements Subscriber {
     public WonderSetUpView wonderSetUpView;
     
     public LauncherViewController launcherViewController;
-    public SetUpPlayerController setUpPlayerController;
+    public PlayerSetUpViewController setUpPlayerController;
     public WonderSetUpController wonderSetUpController;
 
     public Game(GameMaster gameMaster) {
         this.gameMaster = gameMaster;
         this.playerList = new ArrayList<Player>();
         this.launcherViewController = new LauncherViewController(this.gameMaster);
-        this.setUpPlayerController = new SetUpPlayerController(this.gameMaster);
+        this.setUpPlayerController = new PlayerSetUpViewController(this.gameMaster);
         this.wonderSetUpController = new WonderSetUpController(this.gameMaster);
 
         this.launcherView = new LauncherView(this.launcherViewController.getHandler());
