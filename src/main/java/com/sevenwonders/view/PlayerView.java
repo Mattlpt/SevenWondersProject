@@ -7,7 +7,9 @@ import com.sevenwonders.Subscriber;
 
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
@@ -23,7 +25,25 @@ public class PlayerView implements Subscriber {
         this.controller = eventHandler;
 
         layout = new BorderPane();
-        playerView = new Scene(layout,800,500);
+        playerView = new Scene(layout,1200,700);
+
+        //VBox de fond 
+        VBox vBoxFond = new VBox();
+
+        //HBox en bas, pour les trois boutons
+        Hbox hBoxBas = new HBox();
+
+
+        //HBox en haut, pour des pions et tt
+        HBox hBoxHaut = new HBox();
+
+        //HBox au milieu, pour dec et pioches
+        HBox hBoxMilieu = new HBox(); 
+
+        //VBox Dec 
+        VBox vBoxDeck = new VBox(); 
+
+        
     }
 
     @Override
