@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sevenwonders.controller.SetUpPlayerController;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -62,23 +60,6 @@ public class GameMaster {
       *  setSceneSetUpPlayer ; 
       */
     public void setSceneSetUpPlayer(Stage stage, Game game, GameMaster gameMaster) throws IOException {
-
-        SetUpPlayerController setUpPlayer = new SetUpPlayerController();
-        setUpPlayer.setGameController(gameMaster);
-        gameMaster.subscribe(setUpPlayer);
-
-        setUpPlayer.show(); 
-        gameMaster.notifySubscribers();
-
-        // SetUpPlayerController setUpPlayerController = new SetUpPlayerController();
-        // setUpPlayerController.setGameController(gameMaster);
-        // gameMaster.subscribe(setUpPlayerController);
-        
-    }
-
-    public void setSceneplayerSetUpView(Stage stage, Game game, GameMaster gameMaster) throws IOException{
-        
-        SetUpPlayerController setUpPlayerController = new SetUpPlayerController(); 
         
     }
     

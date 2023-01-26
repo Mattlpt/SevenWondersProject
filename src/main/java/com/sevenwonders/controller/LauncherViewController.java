@@ -7,7 +7,6 @@ import com.sevenwonders.Game;
 import com.sevenwonders.GameMaster;
 import com.sevenwonders.Subscriber;
 import com.sevenwonders.view.LauncherView;
-import com.sevenwonders.view.PlayerSetUpView;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,6 +42,8 @@ public class LauncherViewController {
 
     
     public LauncherViewController(){
+
+        
 
     }
 

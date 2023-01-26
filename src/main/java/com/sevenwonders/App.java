@@ -12,7 +12,6 @@ import java.util.concurrent.Flow.Publisher;
 import com.sevenwonders.controller.LauncherViewController;
 import com.sevenwonders.controller.PlayerViewController;
 import com.sevenwonders.view.LauncherView;
-import com.sevenwonders.view.PlayerSetUpView;
 import com.sevenwonders.view.PlayerView;
 
 /**

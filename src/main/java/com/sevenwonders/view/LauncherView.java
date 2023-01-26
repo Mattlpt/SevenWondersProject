@@ -2,6 +2,7 @@ package com.sevenwonders.view;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,6 +28,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 
 public class LauncherView extends Stage{
 
@@ -42,7 +44,8 @@ public class LauncherView extends Stage{
     BackgroundImage backgroundImage = new BackgroundImage(image, null, null, null, null);
     public Timeline timelineMouseExit;
 
-    LauncherViewController controller; 
+    LauncherViewController controller;
+    private TextField setUpTextField; 
 
     public LauncherView() throws IOException{
 
@@ -56,6 +59,12 @@ public class LauncherView extends Stage{
          this.startButton.setStyle("-fx-background-color: #ad2d2d; -fx-cursor: hand; -fx-lighting-color: white");
          this.shadow1 = new DropShadow(10, Color.BLACK);
          this.startButton.setEffect(shadow1);
+
+         //Boite de Dialogue 
+        this.setUpTextField = new TextField();
+        this.setUpTextField.setMaxWidth(80);
+        this.setUpTextField.setStyle("-fx-min-width: 100px; -fx-pref-width: 200px; -fx-max-width: 300px; -fx-control-inner-background: fff4d9; -fx-border-color: gray; -fx-border-width: 2;");
+
  
          this.kF = new KeyFrame(
              Duration.millis(80), 
@@ -107,7 +116,7 @@ public class LauncherView extends Stage{
          this.imageView.setFitWidth(1.0);
          this.layout = new StackPane();
 //         this.layout.setBackground(new Background(this.backgroundImage));  
-         this.layout.getChildren().add(this.startButton);
+         this.layout.getChildren().addAll(this.startButton, this.setUpTextField);
          this.launcherView = new Scene(this.layout, 1244, 700);
 
          this.setScene(launcherView);
