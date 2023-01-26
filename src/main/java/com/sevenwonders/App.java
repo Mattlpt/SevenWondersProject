@@ -7,9 +7,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.concurrent.Flow.Publisher;
 
 import com.sevenwonders.controller.LauncherViewController;
+import com.sevenwonders.controller.PlayerViewController;
 import com.sevenwonders.view.LauncherView;
+import com.sevenwonders.view.PlayerSetUpView;
+import com.sevenwonders.view.PlayerView;
 
 /**
  * JavaFX App
@@ -20,19 +24,28 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        GameMaster gameMaster = new GameMaster(new Game()); //Initialise le game master et son argulement le model "game"
+        Game game = new Game();
+        PlayerViewController playerViewController = new PlayerViewController(game); 
 
-        LauncherViewController launcherView = new LauncherViewController();
-        launcherView.setGameMaster(gameMaster);
+        PlayerView playerView = new PlayerView();
 
-        // LauncherView launcherView = new LauncherView(); 
-        // launcherView.setGameMaster(gameMaster);
+        playerView.setController(playerViewController);
+        playerViewController.subscribe(playerView);
 
-        gameMaster.subscribe(launcherView);
+        PlayerView playerView2 = new PlayerView();
+        playerView2.setController(playerViewController);
+        playerViewController.subscribe(playerView2);
 
-        launcherView.show();
+        playerView.show();
+        playerView2.show();
 
-        gameMaster.notifySubscribers();
+        LauncherViewController launcherViewController = new LauncherViewController();
+        LauncherView launcherView = new LauncherView();
+        launcherView.setController(launcherViewController);
+
+        launcherView.show(); 
+
+        playerViewController.notifySubscribers();
     }
 
     public static void main(String[] args) {

@@ -25,7 +25,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 
-public class LauncherView extends Stage implements Subscriber{
+public class LauncherView extends Stage{
 
     public Scene launcherView;
     public StackPane layout;
@@ -40,7 +40,7 @@ public class LauncherView extends Stage implements Subscriber{
     public Timeline timelineMouseExit;
 
     LauncherViewController controller; 
-    
+
     public LauncherView() throws IOException{
 
         
@@ -74,12 +74,6 @@ public class LauncherView extends Stage implements Subscriber{
         this.controller = new LauncherViewController();
 
         this.startButton.setOnAction(e -> {
-            try {
-                this.controller.onButtonClick();
-            } catch (IOException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
         });
 
  
@@ -93,12 +87,13 @@ public class LauncherView extends Stage implements Subscriber{
          this.setScene(launcherView);
     }
 
-    @Override
-    public void update(Game game) {
-        // TODO Auto-generated method stub
-        
+    /**
+     * @param controller
+     */
+    public void setController(LauncherViewController controller){
+        this.controller = controller; 
     }
-
-    public void setGameMaster(GameMaster gameMaster) {
+    public LauncherViewController getController() {
+        return controller;
     }
 }
