@@ -1,37 +1,46 @@
 package com.sevenwonders;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class Game {
+import com.sevenwonders.controller.LauncherViewController;
+import com.sevenwonders.controller.PlayerSetUpViewController;
+import com.sevenwonders.controller.WonderSetUpController;
+import com.sevenwonders.view.LauncherView;
+import com.sevenwonders.view.PlayerSetUpView;
+import com.sevenwonders.view.WonderSetUpView;
 
-    /*
-     *  Game ; model du jeu 
-     */
+public class Game implements Subscriber {
 
-    private List<Player> playerList = new ArrayList(); 
+    GameMaster gameMaster;
+    private ArrayList<Player> playerList;
+    
+    public LauncherView launcherView;
+    public PlayerSetUpView playerSetUpView;
+    public WonderSetUpView wonderSetUpView;
+    
+    public LauncherViewController launcherViewController;
+    public PlayerSetUpViewController setUpPlayerController;
+    public WonderSetUpController wonderSetUpController;
 
-    public Game(){
+    public Game(GameMaster gameMaster) {
+        this.gameMaster = gameMaster;
+        this.playerList = new ArrayList<Player>();
+        this.launcherViewController = new LauncherViewController(this.gameMaster);
+        this.setUpPlayerController = new PlayerSetUpViewController(this.gameMaster);
+        this.wonderSetUpController = new WonderSetUpController(this.gameMaster);
+
+        this.launcherView = new LauncherView(this.launcherViewController.getHandler());
+        this.playerSetUpView = new PlayerSetUpView(this.setUpPlayerController.getHandler());
+        this.wonderSetUpView = new WonderSetUpView(this.wonderSetUpController.getHandler());
     }
 
-    public List getPlayerList(){return this.playerList;}
-    public void setPlayerList(List playeList){this.playerList = playeList;}
+    @Override
+    public void update(Game game) {
+        // TODO Auto-generated method stub
+        
+    }
 
-    /*
-     *  setPlayerNumber ; règle le nombre de joueur 
-     */
-    public void setPlayerNumber(String nbPlayerText) {
-        int nbPlayerInt =Integer.parseInt(nbPlayerText);  
-        if(nbPlayerInt > 1 && nbPlayerInt < 8){
-            for(int i = 0; i < nbPlayerInt; i++){
-                playerList.add(new Player("Player", i)); 
-                for(int j = 1 ; j < playerList.size(); j++){
-                    String playerNbString = Integer.toString(playerList.get(i).getNb());                   
-                    String playerNameString = playerList.get(j).getName(); 
-                    System.out.println(playerNameString+playerNbString);
-
-                }
-            }
-        }
+    public ArrayList<Player> getPlayerList() {
+        return this.playerList;
     }
 }

@@ -1,32 +1,27 @@
 package com.sevenwonders;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
-import com.sevenwonders.controller.LauncherViewController;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
 
-    private static Scene scene;
-
     @Override
     public void start(Stage stage) throws IOException {
-        GameMaster gameMaster = new GameMaster(new Game()); //Initialise le game master et son argulement le model "game"
-        LauncherViewController launcherView = new LauncherViewController();
-        launcherView.setGameMaster(gameMaster);
-        gameMaster.subscribe(launcherView);
+        GameMaster gameMaster = new GameMaster();
+        Game game = new Game(gameMaster);
+        gameMaster.setGame(game);
+        gameMaster.subscribe(game.launcherView);
+        gameMaster.subscribe(game.launcherViewController);
 
-        launcherView.show();
-
-        gameMaster.notifySubscribers();
+        Stage window = stage;
+        window.setTitle("7 Wonders : Architects");
+        window.setScene(game.launcherView.getScene());
+        window.show();
     }
 
     public static void main(String[] args) {

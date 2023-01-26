@@ -1,10 +1,20 @@
 package com.sevenwonders.view;
 
-import javafx.scene.layout.StackPane;
+import com.sevenwonders.Game;
+import com.sevenwonders.GameMaster;
+import com.sevenwonders.Subscriber;
 
-public class PlayerView {
-    
-    private StackPane stackPane ; 
-    
-    
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class PlayerView implements Subscriber {
+        
+    private StackPane stackPane ;
+
+    @Override
+    public void update(Game game) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

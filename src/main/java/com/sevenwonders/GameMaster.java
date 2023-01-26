@@ -2,30 +2,41 @@ package com.sevenwonders;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-
-import com.sevenwonders.controller.SetUpPlayerController;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 
 public class GameMaster {
 
-    /*
-     *  Game Master ; le coeur du jeu. 
-     *  c'est ici qu'on lieu les implémentations 
-     */
+    private List<Subscriber> subscribers;
+    private Game game ;
 
-    private List<Subscriber> subscribers = new ArrayList<>();
-    private Game game ; 
-    private static Scene scene; 
-
-    public GameMaster(Game game){
-        this.game = game ;
+    public GameMaster(){
+        this.subscribers = new ArrayList<Subscriber>();
     }
+
+    public void setPlayers(int nb) {
+        ArrayList<Player> playerList = this.game.getPlayerList();
+        for(int i=0; i<nb; i++) {
+            playerList.add(new Player("Joueur"+(i+1)));
+        }
+        Collections.shuffle(playerList);
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public Game getGame() {
+        return this.game;
+    }
+
+
+
+
+
+
+
 
     /**
      * Adds a subscriber to the list
@@ -57,29 +68,5 @@ public class GameMaster {
      * @throws IOException
      */
 
-
-     /*
-      *  setSceneSetUpPlayer ; 
-      */
-    public void setSceneSetUpPlayer(Stage stage, Game game, GameMaster gameMaster) throws IOException {
-        SetUpPlayerController setUpPlayer = new SetUpPlayerController();
-        setUpPlayer.setGameController(gameMaster);
-        gameMaster.subscribe(setUpPlayer);
-
-        setUpPlayer.show(); 
-        gameMaster.notifySubscribers();
-    }
     
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-
-    public void receivePlayerNumber(String nbPlayerText) {
-        this.game.setPlayerNumber(nbPlayerText); 
-    }
 }
