@@ -92,6 +92,6 @@ public class GameMaster {
     }
 
     public void receivePlayerNumber(String nbPlayerText) {
-        this.game.setPlayerNumber(nbPlayerText); 
+        //this.game.setPlayerNumber(nbPlayerText); 
     }
 }
