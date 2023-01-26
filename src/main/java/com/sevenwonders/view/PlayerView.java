@@ -50,13 +50,15 @@ public class PlayerView implements Subscriber {
 
         //HBox au milieu, pour dec et pioches
         HBox hBoxMilieu = new HBox(); 
+        hBoxMilieu.setAlignment(Pos.CENTER);
 
         //VBox Dec 
         VBox vBoxDeck = new VBox(); 
+        vBoxDeck.setAlignment(Pos.CENTER);
 
         //DOCK
-        //Image imageDeck = new Image(new File().toURI().toString());
-        //ImageView imageViewDeck = new ImageView(imageDeck);
+        Image imageDeck = new Image(new File("src/main/Ressources/wonder_alexandriaTEST.png").toURI().toString());
+        ImageView imageViewDeck = new ImageView(imageDeck);
 
 
         //Boutons 
@@ -70,8 +72,12 @@ public class PlayerView implements Subscriber {
 
         hBoxHaut.getChildren().add(infoButton); 
 
+        hBoxMilieu.getChildren().add(vBoxDeck);
+        vBoxDeck.getChildren().add(imageViewDeck); 
+
         hBoxBas.getChildren().addAll(leftButton, centreButton, rightButton); 
 
+        layout.setCenter(hBoxMilieu);
         layout.setBottom(hBoxBas);
         layout.setTop(hBoxHaut);
 
