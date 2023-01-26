@@ -126,4 +126,8 @@ public class WonderSetUpView implements Subscriber {
         // TODO Auto-generated method stub
         
     }
+
+    public Scene getScene() {
+        return this.wonderSetUp;
+    }
 }

@@ -36,7 +36,13 @@ public class PlayerSetUpViewController implements Subscriber {
                 try {
                     nb = Integer.parseInt(textField.getText());
                 }catch(NumberFormatException e) {textField.setText(null);}
-                getMaster().setPlayers(nb);
+                if(nb > 1 && nb < 8) {
+                    getMaster().setPlayers(nb);
+                    window.setScene(getMaster().getGame().wonderSetUpView.getScene());
+                }
+                else {
+                    textField.setText(null);
+                }
                 
             }  
         };
