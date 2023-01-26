@@ -16,7 +16,7 @@ public class App extends Application {
         Game game = new Game(gameMaster);
         gameMaster.setGame(game);
         gameMaster.subscribe(game.launcherView);
-        gameMaster.subscribe(game.launcherViewController);
+
 
         Stage window = stage;
         window.setTitle("7 Wonders : Architects");
