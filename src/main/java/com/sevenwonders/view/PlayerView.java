@@ -6,12 +6,15 @@ import com.sevenwonders.GameMaster;
 import com.sevenwonders.Subscriber;
 
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.skin.ButtonSkin;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.event.ActionEvent;
 
 public class PlayerView implements Subscriber {
@@ -25,15 +28,14 @@ public class PlayerView implements Subscriber {
         this.controller = eventHandler;
 
         layout = new BorderPane();
-        playerView = new Scene(layout,1200,700);
 
         //VBox de fond 
         VBox vBoxFond = new VBox();
 
         //HBox en bas, pour les trois boutons
-        Hbox hBoxBas = new HBox();
-
-
+        HBox hBoxBas = new HBox();
+        hBoxBas.setAlignment(Pos.CENTER);
+        
         //HBox en haut, pour des pions et tt
         HBox hBoxHaut = new HBox();
 
@@ -43,6 +45,18 @@ public class PlayerView implements Subscriber {
         //VBox Dec 
         VBox vBoxDeck = new VBox(); 
 
+        //Boutons 
+
+        Button centreButton = new Button();
+        Button leftButton = new Button(); 
+        Button rightButton = new Button(); 
+
+        hBoxBas.getChildren().addAll(leftButton, centreButton, rightButton); 
+
+        layout.setBottom(hBoxBas);
+
+
+        playerView = new Scene(layout,1200,700);
         
     }
 
