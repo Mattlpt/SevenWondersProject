@@ -39,42 +39,15 @@ public class LauncherView implements Subscriber{
 
     EventHandler<ActionEvent> controller; 
     
-    public LauncherView() {
-        
+    public LauncherView(EventHandler<ActionEvent> eventHandler) {
+        this.controller = eventHandler;
+
          //Bouton
          this.startButton = new Button("Start");
-         this.startButton.setTextFill(Color.WHITE);
-         this.startButton.setFont(new Font("Arial", 28));
-         this.startButton.setPrefHeight(100);
-         this.startButton.setPrefWidth(200);
-         this.startButton.setStyle("-fx-background-color: #ad2d2d; -fx-cursor: hand; -fx-lighting-color: white");
-         this.shadow1 = new DropShadow(10, Color.BLACK);
-         this.startButton.setEffect(shadow1);
- 
-         this.kF = new KeyFrame(
-             Duration.millis(80), 
-             new KeyValue(this.startButton.prefWidthProperty(), 215),
-             new KeyValue(this.startButton.prefHeightProperty(), 115)
-             );
-         this.timeline.getKeyFrames().add(this.kF);
-         this.startButton.setOnMouseEntered(event -> {this.timeline.play();});
- 
-         this.timelineMouseExit = new Timeline();
-         this.kF2 = new KeyFrame(
-             Duration.millis(100), 
-             new KeyValue(this.startButton.prefHeightProperty(), 100), 
-             new KeyValue(this.startButton.prefWidthProperty(), 200)
-         ); 
-         this.timelineMouseExit.getKeyFrames().add(this.kF2);
-         this.startButton.setOnMouseExited(event -> {this.timelineMouseExit.play();});
          this.startButton.setOnAction(this.controller);
-
- 
-         this.imageView.setFitHeight(1.0);
-         this.imageView.setFitWidth(1.0);
          this.layout = new StackPane();
          this.layout.getChildren().add(this.startButton);
-         this.launcherView = new Scene(this.layout, 1244, 700);
+         this.launcherView = new Scene(this.layout, 800, 500);
 
     }
 
