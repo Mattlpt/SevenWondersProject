@@ -57,10 +57,6 @@ public class LauncherView implements Subscriber{
         
     }
 
-    public void setController(EventHandler<ActionEvent> eventHandler) {
-        this.controller = eventHandler;
-    }
-
     public Scene getScene() {
         return this.launcherView;
     }

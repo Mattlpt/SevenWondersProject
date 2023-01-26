@@ -54,7 +54,8 @@ public class PlayerSetUpView implements Subscriber{
 
     private EventHandler<ActionEvent> controller; 
     
-    public PlayerSetUpView() {
+    public PlayerSetUpView(EventHandler<ActionEvent> eventHandler) {
+        this.controller = eventHandler;
 
         //Titre 
         this.title = new Label("Selection des joueurs");
@@ -107,9 +108,5 @@ public class PlayerSetUpView implements Subscriber{
     public void update(Game game) {
         // TODO Auto-generated method stub
         
-    }
-
-    public void setController(EventHandler<ActionEvent> eventHandler) {
-        this.controller = eventHandler;
     }
 }

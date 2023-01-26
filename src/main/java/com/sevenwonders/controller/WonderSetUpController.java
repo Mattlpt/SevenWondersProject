@@ -14,16 +14,15 @@ public class WonderSetUpController {
     private GameMaster gameMaster;
     EventHandler eventHandler;
 
-    public WonderSetUpController(){
+    public WonderSetUpController(GameMaster gameMaster){
+        this.gameMaster = gameMaster;
         this.eventHandler = new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent event) {
                 Button eventButton = (Button) event.getSource();
                 Scene scene = eventButton.getScene();
                 
-            }
-            
+            }    
         };
     }
 

@@ -15,54 +15,29 @@ public class Game implements Subscriber {
     private ArrayList<Player> playerList;
     
     public LauncherView launcherView;
-    PlayerSetUpView playerSetUpView;
-    WonderSetUpView wonderSetUpView;
+    public PlayerSetUpView playerSetUpView;
+    public WonderSetUpView wonderSetUpView;
     
     public LauncherViewController launcherViewController;
-    SetUpPlayerController setUpPlayerController;
-    WonderSetUpController wonderSetUpController;
+    public SetUpPlayerController setUpPlayerController;
+    public WonderSetUpController wonderSetUpController;
 
     public Game(GameMaster gameMaster) {
         this.gameMaster = gameMaster;
         this.playerList = new ArrayList<Player>();
         this.launcherViewController = new LauncherViewController(this.gameMaster);
-        this.setUpPlayerController = new SetUpPlayerController();
-        this.wonderSetUpController = new WonderSetUpController();
+        this.setUpPlayerController = new SetUpPlayerController(this.gameMaster);
+        this.wonderSetUpController = new WonderSetUpController(this.gameMaster);
 
         this.launcherView = new LauncherView(this.launcherViewController.getHandler());
-        this.playerSetUpView = new PlayerSetUpView();
-        this.wonderSetUpView = new WonderSetUpView();
-    }
-
-    
-    
-
-    /*
-     *  setPlayerNumber ; règle le nombre de joueur 
-     */
-    public void setPlayerNumber(String nbPlayerText) {
-        int nbPlayerInt =Integer.parseInt(nbPlayerText);  
-        if(nbPlayerInt > 1 && nbPlayerInt < 8){
-            for(int i = 0; i < nbPlayerInt; i++){
-                playerList.add(new Player("Player", i)); 
-                for(int j = 1 ; j < playerList.size(); j++){
-                    String playerNbString = Integer.toString(playerList.get(i).getNb());                   
-                    String playerNameString = playerList.get(j).getName(); 
-                    System.out.println(playerNameString+playerNbString);
-
-                }
-            }
-        }
+        this.playerSetUpView = new PlayerSetUpView(this.setUpPlayerController.getHandler());
+        this.wonderSetUpView = new WonderSetUpView(this.wonderSetUpController.getHandler());
     }
 
     @Override
     public void update(Game game) {
         // TODO Auto-generated method stub
         
-    }
-
-    public void setPlayerList(ArrayList<Player> playerList) {
-        this.playerList = playerList;
     }
 
     public ArrayList<Player> getPlayerList() {

@@ -18,7 +18,9 @@ public class GameMaster {
         this.game = game;
     }
 
-
+    public Game getGame() {
+        return this.game;
+    }
 
 
 
@@ -57,16 +59,5 @@ public class GameMaster {
      * @throws IOException
      */
 
-
-     /*
-      *  setSceneSetUpPlayer ; 
-      */
-
-    public void receivePlayerNumber(String nbPlayerText) {
-        this.game.setPlayerNumber(nbPlayerText); 
-    }
-
-    public Game getGame() {
-        return this.game;
-    }
+    
 }

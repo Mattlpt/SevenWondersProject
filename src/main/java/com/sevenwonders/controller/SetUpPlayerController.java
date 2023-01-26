@@ -15,7 +15,8 @@ public class SetUpPlayerController implements Subscriber {
     private GameMaster gameMaster;
     EventHandler<ActionEvent> eventHandler;
 
-    public SetUpPlayerController() {
+    public SetUpPlayerController(GameMaster gameMaster) {
+        this.gameMaster = gameMaster;
         this.eventHandler = new EventHandler<ActionEvent>() {
 
             @Override
@@ -26,17 +27,6 @@ public class SetUpPlayerController implements Subscriber {
             }  
         };
     }
-
-    
-
-    @FXML
-    protected void onButtonClickContinue(){
-
-    }
-
-    private void updateComponents() {
-    }
-
 
 
     @Override

@@ -21,8 +21,7 @@ public class LauncherViewController implements Subscriber{
         this.gameMaster = gameMaster;
         this.eventHandler = new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) { 
-                System.out.println("test");
+            public void handle(ActionEvent event) {
                 Button eventButton = (Button) event.getSource();
                 Scene scene = eventButton.getScene();
                 Stage window = (Stage) scene.getWindow();

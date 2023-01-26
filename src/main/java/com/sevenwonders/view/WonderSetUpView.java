@@ -57,7 +57,8 @@ public class WonderSetUpView implements Subscriber {
 
     EventHandler<ActionEvent> controller;
 
-    public WonderSetUpView() { 
+    public WonderSetUpView(EventHandler<ActionEvent> eventHandler) {
+        this.controller = eventHandler; 
         
         this.confirmButton = new Button("Confirmer");
         this.confirmButton.setEffect(new Glow(0.3));
@@ -124,9 +125,5 @@ public class WonderSetUpView implements Subscriber {
     public void update(Game game) {
         // TODO Auto-generated method stub
         
-    }
-
-    public void setController(EventHandler<ActionEvent> eventHandler) {
-        this.controller = eventHandler;
     }
 }
