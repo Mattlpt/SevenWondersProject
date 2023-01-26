@@ -31,7 +31,7 @@ public class PlayerView implements Subscriber {
         VBox vBoxFond = new VBox();
 
         //HBox en bas, pour les trois boutons
-        Hbox hBoxBas = new HBox();
+        HBox hBoxBas = new HBox();
 
 
         //HBox en haut, pour des pions et tt
