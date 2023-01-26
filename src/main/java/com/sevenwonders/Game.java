@@ -7,6 +7,7 @@ import com.sevenwonders.controller.PlayerSetUpViewController;
 import com.sevenwonders.controller.WonderSetUpController;
 import com.sevenwonders.view.LauncherView;
 import com.sevenwonders.view.PlayerSetUpView;
+import com.sevenwonders.view.PlayerView;
 import com.sevenwonders.view.WonderSetUpView;
 
 public class Game implements Subscriber {
@@ -17,10 +18,12 @@ public class Game implements Subscriber {
     public LauncherView launcherView;
     public PlayerSetUpView playerSetUpView;
     public WonderSetUpView wonderSetUpView;
+    public PlayerView playerView; 
     
     public LauncherViewController launcherViewController;
     public PlayerSetUpViewController setUpPlayerController;
     public WonderSetUpController wonderSetUpController;
+
 
     public Game(GameMaster gameMaster) {
         this.gameMaster = gameMaster;

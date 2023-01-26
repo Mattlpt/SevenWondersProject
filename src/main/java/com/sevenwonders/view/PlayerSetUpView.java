@@ -104,7 +104,6 @@ public class PlayerSetUpView implements Subscriber{
 
     @Override
     public void update(Game game) {
-        // TODO Auto-generated method stub
         
     }
 

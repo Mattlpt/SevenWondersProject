@@ -25,8 +25,9 @@ public class LauncherViewController implements Subscriber{
                 Button eventButton = (Button) event.getSource();
                 Scene scene = eventButton.getScene();
                 Stage window = (Stage) scene.getWindow();
-                window.setScene(getMaster().getGame().playerSetUpView.getScene());
-            }          
+            //    window.setScene(getMaster().getGame().playerSetUpView.getScene());
+                window.setScene(getMaster().getGame().playerView.getScene());
+            }           
         };
     }
     

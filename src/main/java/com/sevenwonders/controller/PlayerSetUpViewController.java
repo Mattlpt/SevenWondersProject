@@ -39,18 +39,6 @@ public class PlayerSetUpViewController implements Subscriber {
                 if(nb > 1 && nb < 8) {
                     getMaster().setPlayers(nb);
                     window.setScene(getMaster().getGame().wonderSetUpView.getScene());
-
-
-                    
-                    GameMaster gameMaster = new GameMaster();
-                    Game game = new Game(gameMaster);
-                    gameMaster.setGame(game);
-                    gameMaster.subscribe(game.launcherView);
-
-                    Stage window2 = new Stage(); 
-                    window2.setTitle("7 Wonders : Architects");
-                    window2.setScene(game.launcherView.getScene());
-                    window2.show();
                 }
                 else {
                     textField.setText(null);
