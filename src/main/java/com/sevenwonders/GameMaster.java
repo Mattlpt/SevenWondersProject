@@ -2,6 +2,7 @@ package com.sevenwonders;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -12,6 +13,14 @@ public class GameMaster {
 
     public GameMaster(){
         this.subscribers = new ArrayList<Subscriber>();
+    }
+
+    public void setPlayers(int nb) {
+        ArrayList<Player> playerList = this.game.getPlayerList();
+        for(int i=0; i<nb; i++) {
+            playerList.add(new Player("Joueur"+(i+1)));
+        }
+        Collections.shuffle(playerList);
     }
 
     public void setGame(Game game) {
