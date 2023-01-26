@@ -40,8 +40,8 @@ public class WonderSetUpView implements Subscriber {
     Scene wonderSetUp;
     BorderPane layout;
     HBox mainBox;
-    VBox wonderList;
-    VBox wonderChoice;
+    VBox wonderListBox;
+    VBox wonderChoiceBox;
     HBox titleBox;
     HBox confirmBox;
     Label title;
@@ -69,9 +69,7 @@ public class WonderSetUpView implements Subscriber {
         this.fadeTransition.setToValue(1.0);
 
 
-        this.confirmButton.setOnAction(e -> {
-
-        });
+        this.confirmButton.setOnAction(this.controller);
         
         this.confirmBox = new HBox();
         this.confirmBox.setAlignment(Pos.CENTER);
@@ -81,6 +79,7 @@ public class WonderSetUpView implements Subscriber {
 
 
         this.title = new Label("Choisissez votre merveille");
+        this.title.setId("title");
         this.titleBox = new HBox();
         this.titleBox.setId("titleBox");
         this.titleBox.setAlignment(Pos.CENTER);
@@ -90,25 +89,25 @@ public class WonderSetUpView implements Subscriber {
 
 
         this.wonderChoiceLabel = new Label("Votre choix :");
-        this.wonderChoice = new VBox();
-        this.wonderChoice.setId("wonderChoice");
-        this.wonderChoice.setAlignment(Pos.CENTER);
-        this.wonderChoice.setPadding(new Insets(0,80,0,0));
-        this.wonderChoice.setSpacing(30);
-        this.wonderChoice.getChildren().add(this.wonderChoiceLabel);
+        this.wonderChoiceBox = new VBox();
+        this.wonderChoiceBox.setId("wonderChoice");
+        this.wonderChoiceBox.setAlignment(Pos.CENTER);
+        this.wonderChoiceBox.setPadding(new Insets(0,80,0,0));
+        this.wonderChoiceBox.setSpacing(30);
+        this.wonderChoiceBox.getChildren().add(this.wonderChoiceLabel);
 
         this.wonderListLabel = new Label("Choisissez parmis :");
-        this.wonderList = new VBox();
-        this.wonderList.setId("wonderList");
-        this.wonderList.setAlignment(Pos.CENTER);
-        this.wonderList.setPadding(new Insets(0,0,0,80));
-        this.wonderList.setSpacing(20);
-        this.wonderList.getChildren().add(this.wonderListLabel);
+        this.wonderListBox = new VBox();
+        this.wonderListBox.setId("wonderList");
+        this.wonderListBox.setAlignment(Pos.CENTER);
+        this.wonderListBox.setPadding(new Insets(0,0,0,80));
+        this.wonderListBox.setSpacing(20);
+        this.wonderListBox.getChildren().add(this.wonderListLabel);
 
         this.mainBox = new HBox();
         this.mainBox.setId("mainBox");
         this.mainBox.setAlignment(Pos.CENTER);
-        this.mainBox.getChildren().addAll(this.wonderChoice, this.wonderList);
+        this.mainBox.getChildren().addAll(this.wonderChoiceBox, this.wonderListBox);
         this.mainBox.setSpacing(40);
 
         this.layout = new BorderPane();
@@ -121,6 +120,7 @@ public class WonderSetUpView implements Subscriber {
         this.hbox = new HBox(); 
     }
 
+
     @Override
     public void update(Game game) {
         // TODO Auto-generated method stub
@@ -130,4 +130,9 @@ public class WonderSetUpView implements Subscriber {
     public Scene getScene() {
         return this.wonderSetUp;
     }
+
+    public BorderPane getLayout() {
+        return this.layout;
+    }
+    
 }

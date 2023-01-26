@@ -81,7 +81,7 @@ public class PlayerSetUpView implements Subscriber{
         this.setUpButton = new Button("Confirmer");
         this.setUpButton.setEffect(new Glow(0.3));
         this.setUpButton.setEffect(new DropShadow(30, Color.BLACK));
-        this.setUpButton.setStyle("-fx-min-width: 180px -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white; ");
+        this.setUpButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white; ");
         this.fadeTransition = new FadeTransition(Duration.millis(200), this.setUpButton); 
         this.fadeTransition.setFromValue(0.5);
         this.fadeTransition.setToValue(6.0);
