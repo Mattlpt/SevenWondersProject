@@ -64,10 +64,4 @@ public class LauncherView implements Subscriber{
     public Scene getScene() {
         return this.launcherView;
     }
-
-    @Override
-    public GameMaster getMaster() {
-        // TODO Auto-generated method stub
-        return null;
-    }
 }

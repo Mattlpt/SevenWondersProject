@@ -49,12 +49,4 @@ public class SetUpPlayerController implements Subscriber {
         return this.eventHandler;
     }
 
-
-
-    @Override
-    public GameMaster getMaster() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
 }

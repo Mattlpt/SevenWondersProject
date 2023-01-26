@@ -10,9 +10,12 @@ public class GameMaster {
     private List<Subscriber> subscribers;
     private Game game ;
 
-    public GameMaster(Game game){
-        this.game = game ;
+    public GameMaster(){
         this.subscribers = new ArrayList<Subscriber>();
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 
 

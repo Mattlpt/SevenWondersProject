@@ -17,11 +17,4 @@ public class PlayerView implements Subscriber {
         
     }
 
-    @Override
-    public GameMaster getMaster() {
-        // TODO Auto-generated method stub
-        return null;
-    } 
-    
-    
 }

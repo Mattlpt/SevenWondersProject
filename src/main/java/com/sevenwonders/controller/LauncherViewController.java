@@ -17,7 +17,8 @@ public class LauncherViewController implements Subscriber{
     GameMaster gameMaster;
     EventHandler eventHandler;
     
-    public LauncherViewController() {
+    public LauncherViewController(GameMaster gameMaster) {
+        this.gameMaster = gameMaster;
         this.eventHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) { 
@@ -25,7 +26,6 @@ public class LauncherViewController implements Subscriber{
                 Button eventButton = (Button) event.getSource();
                 Scene scene = eventButton.getScene();
                 Stage window = (Stage) scene.getWindow();
-                GameMaster gameMaster = getMaster();
                 window.setScene(gameMaster.getGame().launcherView.getScene());
             }          
         };
@@ -42,12 +42,6 @@ public class LauncherViewController implements Subscriber{
 
     public EventHandler<ActionEvent> getHandler() {
         return this.eventHandler;
-    }
-
-    @Override
-    public GameMaster getMaster() {
-        
-        return this.gameMaster;
     }
 
 }

@@ -11,6 +11,7 @@ import com.sevenwonders.view.WonderSetUpView;
 
 public class Game implements Subscriber {
 
+    GameMaster gameMaster;
     private ArrayList<Player> playerList;
     
     public LauncherView launcherView;
@@ -21,10 +22,10 @@ public class Game implements Subscriber {
     SetUpPlayerController setUpPlayerController;
     WonderSetUpController wonderSetUpController;
 
-    public Game() {
+    public Game(GameMaster gameMaster) {
+        this.gameMaster = gameMaster;
         this.playerList = new ArrayList<Player>();
-
-        this.launcherViewController = new LauncherViewController();
+        this.launcherViewController = new LauncherViewController(this.gameMaster);
         this.setUpPlayerController = new SetUpPlayerController();
         this.wonderSetUpController = new WonderSetUpController();
 
@@ -66,14 +67,5 @@ public class Game implements Subscriber {
 
     public ArrayList<Player> getPlayerList() {
         return this.playerList;
-    }
-
-
-
-
-    @Override
-    public GameMaster getMaster() {
-        // TODO Auto-generated method stub
-        return null;
     }
 }

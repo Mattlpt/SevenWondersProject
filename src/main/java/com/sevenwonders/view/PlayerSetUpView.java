@@ -112,13 +112,4 @@ public class PlayerSetUpView implements Subscriber{
     public void setController(EventHandler<ActionEvent> eventHandler) {
         this.controller = eventHandler;
     }
-
-    @Override
-    public GameMaster getMaster() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
-
 }
