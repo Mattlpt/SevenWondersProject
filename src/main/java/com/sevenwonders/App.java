@@ -24,28 +24,27 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Game game = new Game();
-        PlayerViewController playerViewController = new PlayerViewController(game); 
+        // Game game = new Game();
+        // PlayerViewController playerViewController = new PlayerViewController(game); 
 
-        PlayerView playerView = new PlayerView();
+        // PlayerView playerView = new PlayerView();
 
-        playerView.setController(playerViewController);
-        playerViewController.subscribe(playerView);
+        // playerView.setController(playerViewController);
+        // playerViewController.subscribe(playerView);
 
-        PlayerView playerView2 = new PlayerView();
-        playerView2.setController(playerViewController);
-        playerViewController.subscribe(playerView2);
+        // PlayerView playerView2 = new PlayerView();
+        // playerView2.setController(playerViewController);
+        // playerViewController.subscribe(playerView2);
 
-        playerView.show();
-        playerView2.show();
+        // playerView.show();
+        // playerView2.show();
 
         LauncherViewController launcherViewController = new LauncherViewController();
         LauncherView launcherView = new LauncherView();
         launcherView.setController(launcherViewController);
 
         launcherView.show(); 
-
-        playerViewController.notifySubscribers();
+        // playerViewController.notifySubscribers();
     }
 
     public static void main(String[] args) {
