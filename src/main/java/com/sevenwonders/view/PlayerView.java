@@ -1,6 +1,8 @@
 package com.sevenwonders.view;
 
 
+import java.io.File;
+
 import com.sevenwonders.Game;
 import com.sevenwonders.GameMaster;
 import com.sevenwonders.Subscriber;
@@ -8,12 +10,15 @@ import com.sevenwonders.Subscriber;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.skin.ButtonSkin;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.event.ActionEvent;
 
@@ -35,9 +40,13 @@ public class PlayerView implements Subscriber {
         //HBox en bas, pour les trois boutons
         HBox hBoxBas = new HBox();
         hBoxBas.setAlignment(Pos.CENTER);
-        
+        hBoxBas.setSpacing(30);
+        hBoxBas.setPadding(new Insets(0,0,20,0)); 
+
         //HBox en haut, pour des pions et tt
         HBox hBoxHaut = new HBox();
+        hBoxHaut.setAlignment(Pos.CENTER);
+        hBoxHaut.setPadding(new Insets(20,0,0,0)); 
 
         //HBox au milieu, pour dec et pioches
         HBox hBoxMilieu = new HBox(); 
@@ -45,15 +54,26 @@ public class PlayerView implements Subscriber {
         //VBox Dec 
         VBox vBoxDeck = new VBox(); 
 
-        //Boutons 
+        //DOCK
+        //Image imageDeck = new Image(new File().toURI().toString());
+        //ImageView imageViewDeck = new ImageView(imageDeck);
 
-        Button centreButton = new Button();
-        Button leftButton = new Button(); 
-        Button rightButton = new Button(); 
+
+        //Boutons 
+        Button centreButton = new Button("Button");
+        Button leftButton = new Button("Button"); 
+        Button rightButton = new Button("Button"); 
+
+        Button infoButton = new Button("Button"); 
+
+
+
+        hBoxHaut.getChildren().add(infoButton); 
 
         hBoxBas.getChildren().addAll(leftButton, centreButton, rightButton); 
 
         layout.setBottom(hBoxBas);
+        layout.setTop(hBoxHaut);
 
 
         playerView = new Scene(layout,1200,700);
