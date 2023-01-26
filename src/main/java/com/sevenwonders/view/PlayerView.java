@@ -82,7 +82,7 @@ public class PlayerView implements Subscriber {
         layout.setTop(hBoxHaut);
 
 
-        playerView = new Scene(layout,1200,700);
+        playerView = new Scene(layout,1200,800);
         
     }
 
