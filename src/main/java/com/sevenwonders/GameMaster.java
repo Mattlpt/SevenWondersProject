@@ -13,10 +13,6 @@ public class GameMaster {
     public GameMaster(Game game){
         this.game = game ;
         this.subscribers = new ArrayList<Subscriber>();
-        this.game.launcherView.setController(this.game.launcherViewController.getHandler());
-        this.game.playerSetUpView.setController(this.game.setUpPlayerController.getHandler());
-        this.game.wonderSetUpView.setController(this.game.wonderSetUpController.getHandler());
-        this.game.launcherViewController.setGameMaster(this);
     }
 
 

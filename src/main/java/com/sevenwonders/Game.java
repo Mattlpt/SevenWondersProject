@@ -17,7 +17,7 @@ public class Game implements Subscriber {
     PlayerSetUpView playerSetUpView;
     WonderSetUpView wonderSetUpView;
     
-    LauncherViewController launcherViewController;
+    public LauncherViewController launcherViewController;
     SetUpPlayerController setUpPlayerController;
     WonderSetUpController wonderSetUpController;
 
@@ -28,7 +28,7 @@ public class Game implements Subscriber {
         this.setUpPlayerController = new SetUpPlayerController();
         this.wonderSetUpController = new WonderSetUpController();
 
-        this.launcherView = new LauncherView();
+        this.launcherView = new LauncherView(this.launcherViewController.getHandler());
         this.playerSetUpView = new PlayerSetUpView();
         this.wonderSetUpView = new WonderSetUpView();
     }
