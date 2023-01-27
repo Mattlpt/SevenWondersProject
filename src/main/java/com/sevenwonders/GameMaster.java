@@ -1,6 +1,9 @@
 package com.sevenwonders;
 
 import javafx.event.EventHandler;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,8 +35,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 
 public class GameMaster {
@@ -169,6 +177,10 @@ public class GameMaster {
             @Override
                 public void handle(ActionEvent event) {
                     Button eventButton = (Button) event.getSource();
+                    Scene scene = eventButton.getScene();
+                    Stage window = (Stage) scene.getWindow();
+                    BorderPane layout = (BorderPane) eventButton.getParent().getParent().getParent();
+                    layout.setBackground(new Background(new BackgroundImage(new Image(new File("src/main/Ressources/BackgroundWonders/Background"+eventButton.getText()+".png").toURI().toString()), null, null, null, null)));
                     HBox box = (HBox) eventButton.getParent().getParent();
                     VBox box1 = null;
                     VBox box2 = null;

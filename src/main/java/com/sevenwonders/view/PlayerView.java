@@ -34,6 +34,7 @@ public class PlayerView implements Subscriber {
     HBox hBoxBottom;
     HBox hBoxTop;
     VBox resourceBox;
+    VBox inventoryBox;
     VBox vBoxMilieu;
     HBox hBoxHaut;
     HBox hBoxBas;
@@ -48,6 +49,7 @@ public class PlayerView implements Subscriber {
     Label papierLabel;
     Label verreLabel;
     Label pieceLabel;
+    Label bouclierLabel;
     Image leftDrawn;
     Image imageDeck;
     Image rightDrawn;
@@ -86,6 +88,7 @@ public class PlayerView implements Subscriber {
         this.papierLabel = new Label("Papier");
         this.verreLabel = new Label("Verre");
         this.pieceLabel = new Label("Piece : ");
+        this.bouclierLabel = new Label("Bouclier : ");
 
         this.leftDrawn = new Image(new File("src/main/Ressources/Card/BlueCard.png").toURI().toString());
         this.leftDrawView = new ImageView(this.leftDrawn);
@@ -111,7 +114,12 @@ public class PlayerView implements Subscriber {
         this.resourceBox = new VBox();
         this.resourceBox.setAlignment(Pos.CENTER);
         this.resourceBox.setSpacing(30);
-        this.resourceBox.getChildren().addAll(this.boisLabel, this.pierreLabel, this.pieceLabel);
+        this.resourceBox.getChildren().addAll(this.boisLabel, this.pierreLabel, this.papierLabel, this.verreLabel);
+
+        this.inventoryBox = new VBox();
+        this.inventoryBox.setAlignment(Pos.CENTER);
+        this.inventoryBox.setSpacing(30);
+        this.inventoryBox.getChildren().addAll(this.bouclierLabel, this.pieceLabel);
 
         //HBox en haut, pour des pions et tt
         this.hBoxTop = new HBox();
@@ -142,6 +150,7 @@ public class PlayerView implements Subscriber {
         this.layout.setBottom(this.hBoxBottom);
         this.layout.setTop(this.hBoxTop);
         this.layout.setLeft(this.resourceBox);
+        this.layout.setRight(this.inventoryBox);
 
 
         this.playerView = new Scene(this.layout,1200,800);
