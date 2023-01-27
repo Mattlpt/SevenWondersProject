@@ -4,8 +4,13 @@ import javafx.event.EventHandler;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
+import com.sevenwonders.Card.Card;
+import com.sevenwonders.Card.DeckOfCards;
+import com.sevenwonders.Card.GreyCard;
+import com.sevenwonders.Card.Resource;
 import com.sevenwonders.wonder.*;
 
 import javafx.beans.Observable;
@@ -27,6 +32,20 @@ public class GameMaster {
 
     public GameMaster(){
         this.subscribers = new ArrayList<Subscriber>();
+    }
+
+    public void draw(Player player, DeckOfCards deck) {
+        Card pick = deck.getContent().get(0);
+        if(pick instanceof GreyCard) {
+            GreyCard card = (GreyCard) pick;
+            Resource resource = card.getResource();
+            HashMap<String, Integer> resourceList = player.getResourceList();
+            resourceList.forEach((key, value) -> {
+                if(key.contains(resource.getName())) {
+                    value += 1;
+                }
+            });
+        }
     }
 
     public void setWonders() {

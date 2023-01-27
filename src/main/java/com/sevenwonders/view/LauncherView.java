@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -32,7 +33,7 @@ public class LauncherView implements Subscriber{
     public Timeline timeline = new Timeline();
     public KeyFrame kF ;
     public KeyFrame kF2;
-    final Image image = new Image(new File("src/main/resources/images/Scene/7wonders-" + "StartPage.jpg").toURI().toString());
+    final Image image = new Image(new File("src/main/Ressources/ressouces 7W 2/7wonders-cover-2.jpg").toURI().toString());
     public final ImageView imageView = new ImageView(image); 
     BackgroundImage backgroundImage = new BackgroundImage(image, null, null, null, null);
     public Timeline timelineMouseExit;
@@ -41,6 +42,11 @@ public class LauncherView implements Subscriber{
     
     public LauncherView(EventHandler<ActionEvent> eventHandler) {
         this.controller = eventHandler;
+
+        // Fond
+        final Image image = new Image(new File("src/main/Ressources/ressouces 7W 2/7wonders-cover-2.jpg").toURI().toString());
+        final ImageView imageView = new ImageView(image); 
+        BackgroundImage backgroundImage = new BackgroundImage(image, null, null, null, null);
 
          //Bouton
          this.startButton = new Button("Start");
@@ -72,6 +78,7 @@ public class LauncherView implements Subscriber{
 
 
          this.layout = new StackPane();
+         this.layout.setBackground(new Background(this.backgroundImage));
          this.layout.getChildren().add(this.startButton);
          this.launcherView = new Scene(this.layout, 1200, 700);
 
