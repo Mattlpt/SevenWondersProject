@@ -41,8 +41,8 @@ public class GameMaster {
             Resource resource = card.getResource();
             HashMap<String, Integer> resourceList = player.getResourceList();
             resourceList.forEach((key, value) -> {
-                if(key.contains(resource.getName())) {
-                    value += 1;
+                if(key == resource.getName()) {
+                    resourceList.replace(key, value, value+1);
                 }
             });
         }

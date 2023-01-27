@@ -21,7 +21,7 @@ public class PlayerViewController {
                 Button eventButton = (Button) event.getSource();
                 Scene scene = eventButton.getScene();
                 Stage window = (Stage) scene.getWindow();
-                if(eventButton.getText() == "") {
+                if(eventButton.getText() == "Pioche Principale") {
                     getMaster().draw(getMaster().getGame().playerView.getPlayer(), getMaster().getGame().getMainDraw());
                 }
             }

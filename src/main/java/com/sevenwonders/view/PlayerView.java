@@ -26,82 +26,94 @@ import javafx.event.ActionEvent;
 public class PlayerView implements Subscriber {
     private Player player;
 
-    private Scene playerView;
-    private BorderPane layout; ;
+    Scene playerView;
+    BorderPane layout;
+    HBox hBoxBottom;
+    HBox hBoxTop;
+    VBox vBoxMilieu;
+    HBox hBoxBas;
+    VBox wonderBox;
+
+    Button centreButton;
+    Button leftButton;
+    Button rightButton;
+    Button infoButton;
+
+    Image leftDrawn;
+    Image imageDeck;
+    Image rightDrawn;
+    ImageView leftDrawView;
+    ImageView imageViewDeck;
+    ImageView rightDrawView;
+
+
 
     private EventHandler<ActionEvent> controller;
 
     public PlayerView(EventHandler<ActionEvent> eventHandler) {
         this.controller = eventHandler;
 
-        layout = new BorderPane();
-
-        //VBox de fond 
-        VBox vBoxFond = new VBox();
-
-        //HBox en bas, pour les trois boutons
-        HBox hBoxBas = new HBox();
-        hBoxBas.setAlignment(Pos.CENTER);
-        hBoxBas.setSpacing(30);
-        hBoxBas.setPadding(new Insets(0,0,20,0)); 
-
-        //HBox en haut, pour des pions et tt
-        HBox hBoxHaut = new HBox();
-        hBoxHaut.setAlignment(Pos.CENTER);
-        hBoxHaut.setPadding(new Insets(20,0,0,0)); 
-
-        //HBox au milieu, pour dec et pioches
-        HBox hBoxMilieu = new HBox(); 
-        hBoxMilieu.setAlignment(Pos.CENTER);
-
-        //VBox Dec 
-        VBox vBoxDeck = new VBox(); 
-        vBoxDeck.setAlignment(Pos.CENTER);
-
-        Image leftDrawn = new Image(new File("src/main/Ressources/ressouces 7W 2/cardsTest.png").toURI().toString());
-        ImageView leftDrawView = new ImageView(leftDrawn);
-
-        //DOCK
-        Image imageDeck = new Image(new File("src/main/Ressources/wonder_alexandriaTEST.png").toURI().toString());
-        ImageView imageViewDeck = new ImageView(imageDeck);
-
-        //Drown
-        Image rightDrawn = new Image(new File("src/main/Ressources/ressouces 7W 2/cardsTest.png").toURI().toString());
-        ImageView rightDrawView = new ImageView(rightDrawn);
-
-
-
         //Boutons Centre
-        Button centreButton = new Button("Button");
-        centreButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
-        
+        this.centreButton = new Button("Pioche Principale");
+        this.centreButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
+        this.centreButton.setOnAction(this.controller);
         //Bouton Gauche
-        Button leftButton = new Button("Button"); 
-        leftButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
-       
+        this.leftButton = new Button("Button"); 
+        this.leftButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");      
         //Bouton Droit
-        Button rightButton = new Button("Button"); 
-        rightButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
+        this.rightButton = new Button("Button"); 
+        this.rightButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");    
         
         //Bouton Haut 
-        Button infoButton = new Button("Button"); 
-        infoButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
+        this.infoButton = new Button("Button"); 
+        this.infoButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
+
+        this.leftDrawn = new Image(new File("src/main/Ressources/ressouces 7W 2/cardsTest.png").toURI().toString());
+        this.leftDrawView = new ImageView(this.leftDrawn);
+
+        //DOCK
+        this.imageDeck = new Image(new File("src/main/Ressources/wonder_alexandriaTEST.png").toURI().toString());
+        this.imageViewDeck = new ImageView(this.imageDeck);
+
+        //Drown
+        this.rightDrawn = new Image(new File("src/main/Ressources/ressouces 7W 2/cardsTest.png").toURI().toString());
+        this.rightDrawView = new ImageView(this.rightDrawn);
 
 
-        hBoxHaut.getChildren().add(infoButton); 
+        //HBox en bas, pour les trois boutons
+        this.hBoxBottom = new HBox();
+        this.hBoxBottom.setAlignment(Pos.CENTER);
+        this.hBoxBottom.setSpacing(30);
+        this.hBoxBottom.setPadding(new Insets(0,0,20,0));
+        this.hBoxBottom.getChildren().addAll(this.leftButton, this.centreButton, this.rightButton);
 
-        hBoxMilieu.getChildren().addAll(leftDrawView, vBoxDeck, rightDrawView);
-        vBoxDeck.getChildren().add(imageViewDeck); 
+        //HBox en haut, pour des pions et tt
+        this.hBoxTop = new HBox();
+        this.hBoxTop.setAlignment(Pos.CENTER);
+        this.hBoxTop.setPadding(new Insets(20,0,0,0));
+        this.hBoxTop.getChildren().add(this.infoButton);
 
-        
-        hBoxBas.getChildren().addAll(leftButton, centreButton, rightButton); 
+        //VBox Dec 
+        this.wonderBox = new VBox(); 
+        this.wonderBox.setAlignment(Pos.CENTER);
+        this.wonderBox.getChildren().add(this.imageViewDeck); 
 
-        layout.setCenter(hBoxMilieu);
-        layout.setBottom(hBoxBas);
-        layout.setTop(hBoxHaut);
+        //HBox au milieu, pour dec et pioches
+        this.hBoxBas = new HBox(); 
+        this.hBoxBas.setAlignment(Pos.CENTER);
+        this.hBoxBas.getChildren().addAll(this.leftDrawView, this.wonderBox, this.rightDrawView);
+
+        this.vBoxMilieu = new VBox();
+        this.vBoxMilieu.setAlignment(Pos.CENTER);
+        this.vBoxMilieu.getChildren().add(this.hBoxBas);
+
+        this.layout = new BorderPane();
+        this.layout.setCenter(this.vBoxMilieu);
+        this.layout.setBottom(this.hBoxBottom);
+        this.layout.setTop(this.hBoxTop);
 
 
-        playerView = new Scene(layout,1200,800);
+        this.playerView = new Scene(this.layout,1200,800);
         
     }
 

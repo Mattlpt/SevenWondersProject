@@ -27,6 +27,10 @@ public class DeckOfCards {
             this.imageView =null;
         }
     }
+
+    public String toString() {
+        return this.content.toString();
+    }
     
 
     public ArrayList<Card> getContent() {
