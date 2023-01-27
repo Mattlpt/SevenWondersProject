@@ -154,12 +154,15 @@ public class PlayerView implements Subscriber {
 
         this.hBoxHaut = new HBox();
         this.hBoxHaut.setAlignment(Pos.CENTER);
-        this.hBoxHaut.getChildren().add(this.mainDrawView);
         
+        VBox mainDrawBox = new VBox();
+        mainDrawBox.setAlignment(Pos.TOP_LEFT);
+        mainDrawBox.getChildren().add(this.mainDrawView);
+
         //HBox au milieu, pour dec et pioches
         this.hBoxBas = new HBox(); 
         this.hBoxBas.setAlignment(Pos.CENTER);
-        this.hBoxBas.getChildren().addAll(this.leftDrawView, this.wonderBox, this.rightDrawView);
+        this.hBoxBas.getChildren().addAll(mainDrawBox, this.leftDrawView, this.wonderBox, this.rightDrawView);
 
         this.vBoxMilieu = new VBox();
         this.vBoxMilieu.setAlignment(Pos.CENTER);
