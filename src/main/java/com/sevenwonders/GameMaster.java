@@ -119,6 +119,7 @@ public class GameMaster {
                 resourceList.replace(key, value1, value2);
             });
             part.setIsBuilt(true);
+            part.setImage(new Image(new File("src/main/Ressources/Wonders/Alexandrie/Part_Constructions/wonderBuild"+part.getName()+".png").toURI().toString()));
         }
         if(checkBuild(player) == false) {
             int nb = Integer.valueOf(player.getCount());
@@ -135,6 +136,7 @@ public class GameMaster {
                 });
                 player.setPiece(nbp-(part.getCount()-nb));
                 part.setIsBuilt(true);
+                part.setImage(new Image(new File("src/main/Ressources/Wonders/Alexandrie/Part_Constructions/wonderBuild"+part.getName()+".png").toURI().toString()));
 
             }
         }

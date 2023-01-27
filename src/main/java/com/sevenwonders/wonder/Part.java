@@ -12,6 +12,7 @@ public class Part {
     private String bonus;
     private Boolean isBuilt;
     private Image image;
+    private Wonder wonder;
 
     public Part(String name, boolean same, int count, int vicoryPoint, String bonus) {
         this.name = name;
@@ -20,15 +21,26 @@ public class Part {
         this.vicoryPoint = vicoryPoint;
         this.bonus = bonus;
         this.isBuilt = false;
-        this.image = new Image(new File("src/main/Ressources/Wonders/Alexandrie/Part_Constructions/wonder"+this.name+".png").toURI().toString());
     }
 
     public void setIsBuilt(Boolean bool) {
         this.isBuilt = bool;
     }
 
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public void setWonder(Wonder wonder) {
+        this.wonder = wonder;
+    }
+
     public String getName() {
         return this.name;
+    }
+
+    public Wonder getWonder() {
+        return this.wonder;
     }
 
     public boolean getSame() {

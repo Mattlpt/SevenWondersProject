@@ -283,6 +283,7 @@ public class PlayerView implements Subscriber {
         this.pieceLabel.setText(this.player.getPiece() + " x ");
         this.vPLabel.setText(this.player.getPoint()+ " x ");
         this.bouclierLabel.setText(this.player.getBouclier()+ " x ");
+
         
         if(this.player.getWonder().getDeckOfCards().getContent().size() > 0) {
             this.player.getWonder().getDeckOfCards().setImage(this.player.getWonder().getName());
