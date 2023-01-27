@@ -140,7 +140,7 @@ public class PlayerView implements Subscriber {
         this.rightButton.setOnAction(this.controller);
 
         //Bouton Haut 
-        this.infoButton = new Button("Button"); 
+        this.infoButton = new Button("Change Player"); 
         this.infoButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
 
         //BOIS
