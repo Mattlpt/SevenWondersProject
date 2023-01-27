@@ -86,12 +86,26 @@ public class PlayerView implements Subscriber {
         this.infoButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
 
         this.boisLabel = new Label("Bois : ");
+        this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+
         this.pierreLabel = new Label("Pierre : ");
+        this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+
         this.papierLabel = new Label("Papier");
+        this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+
         this.verreLabel = new Label("Verre");
+        this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+
         this.pieceLabel = new Label("Piece : ");
+        this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+
         this.bouclierLabel = new Label("Bouclier : ");
+        this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+
         this.vPLabel = new Label("Points : ");
+        this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+
 
         this.leftDrawn = new Image(new File("src/main/Ressources/Card/BlueCard.png").toURI().toString());
         this.leftDrawView = new ImageView(this.leftDrawn);
@@ -108,6 +122,11 @@ public class PlayerView implements Subscriber {
         this.imageViewDeck = new ImageView(this.imageDeck);  
 
         //HBox en bas, pour les trois boutons
+
+        VBox mainDrawBox = new VBox();
+        mainDrawBox.setAlignment(Pos.TOP_LEFT);
+        mainDrawBox.getChildren().add(this.mainDrawView);
+        
         this.hBoxBottom = new HBox();
         this.hBoxBottom.setAlignment(Pos.CENTER);
         this.hBoxBottom.setSpacing(30);
@@ -117,6 +136,7 @@ public class PlayerView implements Subscriber {
         this.resourceBox = new VBox();
         this.resourceBox.setAlignment(Pos.CENTER);
         this.resourceBox.setSpacing(30);
+        this.resourceBox.setPadding(new Insets(20,0,0,0)); 
         this.resourceBox.getChildren().addAll(this.boisLabel, this.pierreLabel, this.papierLabel, this.verreLabel);
 
         this.inventoryBox = new VBox();
@@ -139,12 +159,12 @@ public class PlayerView implements Subscriber {
 
         this.hBoxHaut = new HBox();
         this.hBoxHaut.setAlignment(Pos.CENTER);
-        this.hBoxHaut.getChildren().add(this.mainDrawView);
-        
+
+
         //HBox au milieu, pour dec et pioches
         this.hBoxBas = new HBox(); 
         this.hBoxBas.setAlignment(Pos.CENTER);
-        this.hBoxBas.getChildren().addAll(this.leftDrawView, this.wonderBox, this.rightDrawView);
+        this.hBoxBas.getChildren().addAll(mainDrawBox, this.leftDrawView, this.wonderBox, this.rightDrawView);
 
         this.vBoxMilieu = new VBox();
         this.vBoxMilieu.setAlignment(Pos.CENTER);
