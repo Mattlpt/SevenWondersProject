@@ -64,4 +64,8 @@ public class Game implements Subscriber {
     public DeckOfCards getMainDraw() {
         return this.mainDraw;
     }
+
+    public GameMaster getMaster() {
+        return this.gameMaster;
+    }
 }

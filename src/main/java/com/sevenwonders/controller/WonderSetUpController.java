@@ -62,6 +62,7 @@ public class WonderSetUpController {
                 }
                 if(counter == playerList.size()) {
                     getMaster().getGame().playerView.setPlayer(getMaster().getGame().getPlayerList().get(0));
+                    gameMaster.notifySubscribers();
                     window.setScene(getMaster().getGame().playerView.getScene());
                 }
                 

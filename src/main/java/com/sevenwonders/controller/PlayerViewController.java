@@ -24,6 +24,7 @@ public class PlayerViewController {
                 if(eventButton.getText() == "Pioche Principale") {
                     getMaster().draw(getMaster().getGame().playerView.getPlayer(), getMaster().getGame().getMainDraw());
                 }
+                gameMaster.notifySubscribers();
             }
             
         };

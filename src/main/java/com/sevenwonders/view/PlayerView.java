@@ -2,6 +2,7 @@ package com.sevenwonders.view;
 
 
 import java.io.File;
+import java.util.ArrayList;
 
 import com.sevenwonders.Game;
 import com.sevenwonders.GameMaster;
@@ -10,6 +11,7 @@ import com.sevenwonders.Subscriber;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.skin.ButtonSkin;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,6 +32,7 @@ public class PlayerView implements Subscriber {
     BorderPane layout;
     HBox hBoxBottom;
     HBox hBoxTop;
+    VBox resourceBox;
     VBox vBoxMilieu;
     HBox hBoxHaut;
     HBox hBoxBas;
@@ -39,7 +42,10 @@ public class PlayerView implements Subscriber {
     Button leftButton;
     Button rightButton;
     Button infoButton;
-
+    Label boisLabel;
+    Label pierreLabel;
+    Label papierLabel;
+    Label verreLabel;
     Image leftDrawn;
     Image imageDeck;
     Image rightDrawn;
@@ -69,11 +75,16 @@ public class PlayerView implements Subscriber {
         this.infoButton = new Button("Button"); 
         this.infoButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
 
-        this.leftDrawn = new Image(new File("src/main/Ressources/ressouces 7W 2/cardsTest.png").toURI().toString());
+        this.boisLabel = new Label("Bois : ");
+        this.pierreLabel = new Label("Pierre : ");
+        this.papierLabel = new Label("Papier");
+        this.verreLabel = new Label("Verre");
+
+        this.leftDrawn = new Image(new File("src/main/Ressources/Card/BlueCard.png").toURI().toString());
         this.leftDrawView = new ImageView(this.leftDrawn);
 
         //Drown
-        this.rightDrawn = new Image(new File("src/main/Ressources/ressouces 7W 2/cardsTest.png").toURI().toString());
+        this.rightDrawn = new Image(new File("src/main/Ressources/Card/BlueCard.png").toURI().toString());
         this.rightDrawView = new ImageView(this.rightDrawn);
 
         //DOCK
@@ -86,6 +97,11 @@ public class PlayerView implements Subscriber {
         this.hBoxBottom.setSpacing(30);
         this.hBoxBottom.setPadding(new Insets(0,0,20,0));
         this.hBoxBottom.getChildren().addAll(this.leftButton, this.centreButton, this.rightButton);
+
+        this.resourceBox = new VBox();
+        this.resourceBox.setAlignment(Pos.CENTER);
+        this.resourceBox.setSpacing(30);
+        this.resourceBox.getChildren().addAll(this.boisLabel, this.pierreLabel);
 
         //HBox en haut, pour des pions et tt
         this.hBoxTop = new HBox();
@@ -114,6 +130,7 @@ public class PlayerView implements Subscriber {
         this.layout.setCenter(this.vBoxMilieu);
         this.layout.setBottom(this.hBoxBottom);
         this.layout.setTop(this.hBoxTop);
+        this.layout.setLeft(this.resourceBox);
 
 
         this.playerView = new Scene(this.layout,1200,800);
@@ -122,8 +139,26 @@ public class PlayerView implements Subscriber {
 
     @Override
     public void update(Game game) {
-        // TODO Auto-generated method stub
-        
+        ArrayList<Player> playerList = game.getPlayerList();
+        int playerId = game.getMaster().fetchPlayerId(this.player);
+        Player lastPlayer = game.getPlayerList().get((playerId+(playerList.size()-1))%playerList.size());
+        this.boisLabel.setText("Bois : "+this.player.getResourceList().get("Bois"));
+        this.pierreLabel.setText("Pierre : "+this.player.getResourceList().get("Pierre"));
+        this.papierLabel.setText("Papier : "+this.player.getResourceList().get("Papier"));
+        this.verreLabel.setText("Verre : "+this.player.getResourceList().get("Verre"));
+        if(this.player.getWonder().getDeckOfCards().getContent().size() > 0) {
+            this.leftDrawView.setImage(new Image(new File("src/main/Ressources/Card/"+this.player.getWonder().getDeckOfCards().getContent().get(0).getColor()+"Card.png").toURI().toString()));
+        }
+        if(this.player.getWonder().getDeckOfCards().getContent().size() == 0) {
+            this.leftDrawView.setImage(null);
+        }
+        if(lastPlayer.getWonder().getDeckOfCards().getContent().size() > 0) {
+            this.rightDrawView.setImage(new Image(new File("src/main/Ressources/Card/"+lastPlayer.getWonder().getDeckOfCards().getContent().get(0).getColor()+"Card.png").toURI().toString()));
+        }
+        if(lastPlayer.getWonder().getDeckOfCards().getContent().size() == 0) {
+            this.rightDrawView.setImage(null);
+        }
+
     }
 
     public void setPlayer(Player player) {
