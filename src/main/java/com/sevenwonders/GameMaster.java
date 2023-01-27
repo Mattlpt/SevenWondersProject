@@ -11,7 +11,15 @@ import com.sevenwonders.Card.Card;
 import com.sevenwonders.Card.DeckOfCards;
 import com.sevenwonders.Card.GreyCard;
 import com.sevenwonders.Card.Resource;
-import com.sevenwonders.wonder.*;
+import com.sevenwonders.wonder.Wonder;
+import com.sevenwonders.wonder.Alexendrie;
+import com.sevenwonders.wonder.Babylone;
+import com.sevenwonders.wonder.Ephese;
+import com.sevenwonders.wonder.Gizeh;
+import com.sevenwonders.wonder.Halicarnasse;
+import com.sevenwonders.wonder.Olympie;
+import com.sevenwonders.wonder.Rhodes;
+
 
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
