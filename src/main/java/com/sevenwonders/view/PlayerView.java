@@ -101,6 +101,12 @@ public class PlayerView implements Subscriber {
 
     private ImageView pieceImageView;
 
+    private Image vPImage;
+
+    private ImageView vPImageView;
+
+    private HBox inventoryBouclierBox;
+
     public PlayerView(EventHandler<ActionEvent> eventHandler) {
         this.controller = eventHandler;
 
@@ -149,11 +155,13 @@ public class PlayerView implements Subscriber {
 
         this.bouclierLabel = new Label("Bouclier : ");
         this.bouclierLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
-        this.bouclierImage = new Image(new File("").toURI().toString());
+        this.bouclierImage = new Image(new File("src/main/Ressources/icones/Bouclier.png").toURI().toString());
         this.bouclierImageView = new ImageView(this.bouclierImage); 
 
         this.vPLabel = new Label("Points : ");
         this.vPLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+        this.vPImage = new Image(new File("src/main/Ressources/icones/Lauriers.png").toURI().toString());
+        this.vPImageView = new ImageView(this.vPImage); 
 
 
         this.leftDrawn = new Image(new File("src/main/Ressources/Card/BlueCard.png").toURI().toString());
@@ -202,16 +210,17 @@ public class PlayerView implements Subscriber {
 
         this.inventoryBox = new VBox();
             this.inventoryVPBox = new HBox();
-            this.inventoryVPBox.getChildren().addAll(this.vPLabel);
+            this.inventoryVPBox.getChildren().addAll(this.vPLabel, this.vPImageView);
             
-            //
+            this.inventoryBouclierBox = new HBox();
+            this.inventoryBouclierBox.getChildren().addAll(this.bouclierLabel, this.bouclierImageView);
 
             this.inventorypieceBox = new HBox();
             this.inventorypieceBox.getChildren().addAll(this.pieceLabel, this.pieceImageView);
 
         this.inventoryBox.setAlignment(Pos.CENTER);
         this.inventoryBox.setSpacing(30);
-        this.inventoryBox.getChildren().addAll(this.vPLabel, this.bouclierLabel, this.inventorypieceBox);
+        this.inventoryBox.getChildren().addAll(this.inventoryVPBox, this.inventoryBouclierBox, this.inventorypieceBox);
 
         //HBox en haut, pour des pions et tt
         this.hBoxTop = new HBox();
@@ -261,8 +270,8 @@ public class PlayerView implements Subscriber {
         this.papierLabel.setText(" x "+this.player.getResourceList().get("Papier"));
         this.verreLabel.setText(" x "+this.player.getResourceList().get("Verre"));
         this.pieceLabel.setText(this.player.getPiece() + " x ");
-        this.vPLabel.setText("Points : "+this.player.getPoint());
-        this.bouclierLabel.setText("Bouclier : "+this.player.getBouclier());
+        this.vPLabel.setText(this.player.getPoint()+ " x ");
+        this.bouclierLabel.setText(this.player.getBouclier()+ " x ");
         
         if(this.player.getWonder().getDeckOfCards().getContent().size() > 0) {
             this.player.getWonder().getDeckOfCards().setImage(this.player.getWonder().getName());
