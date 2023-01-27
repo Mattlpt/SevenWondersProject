@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+import com.sevenwonders.Card.BlueCard;
 import com.sevenwonders.Card.Card;
 import com.sevenwonders.Card.DeckOfCards;
 import com.sevenwonders.Card.GreyCard;
@@ -69,6 +70,10 @@ public class GameMaster {
             if(pick instanceof YellowCard) {
                 YellowCard card = (YellowCard) pick;
                 player.setPiece(player.getPiece() + 1);
+                
+            }
+            if(pick instanceof BlueCard) {
+                BlueCard card = (BlueCard) pick;
                 
             }
             deck.getContent().remove(pick);
