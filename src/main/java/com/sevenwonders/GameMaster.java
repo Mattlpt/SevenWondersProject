@@ -52,12 +52,18 @@ public class GameMaster {
     private List<Subscriber> subscribers;
     private Game game ;
 
+    /*
+     * recupère les souscrits
+     */
     public GameMaster(){
         this.subscribers = new ArrayList<Subscriber>();
     }
 
+    /*
+     * Pioches
+     */
     public void draw(Player player, DeckOfCards deck) {
-        if(deck.getContent().size() > 0) {
+        if(deck.getContent().size() > 0) { // 
             Card pick = deck.getContent().get(0);
             if(pick instanceof GreyCard) {
                 GreyCard card = (GreyCard) pick;

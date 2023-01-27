@@ -17,6 +17,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.skin.ButtonSkin;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -111,8 +114,17 @@ public class PlayerView implements Subscriber {
 
     private ImageView emptyDrawView;
 
+    final String imageURI3 = new File("src/main/Ressources/BackgroundWonders/WhatsApp Image 2023-01-27 at 15.32.55.jpeg").toURI().toString(); 
+    final Image image3 = new Image(imageURI3);
+    final ImageView imageView2 = new ImageView(image3); 
+    BackgroundImage backgroundImage2 = new BackgroundImage(image3, null, null, null, null);
+
     public PlayerView(EventHandler<ActionEvent> eventHandler) {
         this.controller = eventHandler;
+
+        
+
+
 
         //Boutons Centre
         this.centreButton = new Button("Pioche Principale");
@@ -266,6 +278,7 @@ public class PlayerView implements Subscriber {
         this.layout.setLeft(this.resourceBox);
         this.layout.setRight(this.inventoryBox);
 
+        // this.layout.setBackground(new Background(this.backgroundImage2));
 
         this.playerView = new Scene(this.layout,1200,800);
         
