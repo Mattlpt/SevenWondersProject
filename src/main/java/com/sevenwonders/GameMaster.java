@@ -111,6 +111,10 @@ public class GameMaster {
         }
         if(checkBuild(player) == true) {
             part.setIsBuilt(true);
+            sortedResourceList.forEach((key1, value1) -> {
+                int value = resourceList.get(key1)-value1;
+                resourceList.replace(key1, value1, value);
+            });
         }
         if(checkBuild(player) == false) {
             player.setCount(player.getCount()+player.getPiece());
