@@ -2,6 +2,7 @@ package com.sevenwonders.view;
 
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 import com.sevenwonders.Game;
@@ -50,9 +51,11 @@ public class PlayerView implements Subscriber {
     Image leftDrawn;
     Image imageDeck;
     Image rightDrawn;
+    Image mainDraw;
     ImageView leftDrawView;
     ImageView imageViewDeck;
     ImageView rightDrawView;
+    ImageView mainDrawView;
 
 
 
@@ -66,12 +69,14 @@ public class PlayerView implements Subscriber {
         this.centreButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
         this.centreButton.setOnAction(this.controller);
         //Bouton Gauche
-        this.leftButton = new Button("Button"); 
+        this.leftButton = new Button("Pioche Gauche"); 
         this.leftButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");      
+        this.leftButton.setOnAction(this.controller);
         //Bouton Droit
-        this.rightButton = new Button("Button"); 
+        this.rightButton = new Button("Pioche Droite"); 
         this.rightButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");    
-        
+        this.rightButton.setOnAction(this.controller);
+
         //Bouton Haut 
         this.infoButton = new Button("Button"); 
         this.infoButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
@@ -88,6 +93,9 @@ public class PlayerView implements Subscriber {
         //Drown
         this.rightDrawn = new Image(new File("src/main/Ressources/Card/BlueCard.png").toURI().toString());
         this.rightDrawView = new ImageView(this.rightDrawn);
+
+        this.mainDraw = new Image(new File("src/main/Ressources/Card/BlueCard.png").toURI().toString());
+        this.mainDrawView = new ImageView(this.mainDraw);
 
         //DOCK
         this.imageDeck = new Image(new File("src/main/Ressources/wonder_alexandriaTEST.png").toURI().toString());
@@ -118,6 +126,7 @@ public class PlayerView implements Subscriber {
 
         this.hBoxHaut = new HBox();
         this.hBoxHaut.setAlignment(Pos.CENTER);
+        this.hBoxHaut.getChildren().add(this.mainDrawView);
         
         //HBox au milieu, pour dec et pioches
         this.hBoxBas = new HBox(); 
@@ -162,6 +171,13 @@ public class PlayerView implements Subscriber {
         }
         if(lastPlayer.getWonder().getDeckOfCards().getContent().size() == 0) {
             this.rightDrawView.setImage(null);
+        }
+        if(game.getMainDraw().getContent().size() > 0) {
+            game.getMainDraw().setImage("Gizeh");
+            this.mainDrawView.setImage(game.getMainDraw().getImage());
+        }
+        if(game.getMainDraw().getContent().size() == 0) {
+            this.mainDrawView.setImage(null);
         }
 
     }
