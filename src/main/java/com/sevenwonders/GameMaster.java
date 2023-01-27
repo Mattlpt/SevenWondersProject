@@ -88,11 +88,13 @@ public class GameMaster {
     }
 
     public void resourceCount(Player player) {
+        player.setCount(0);
         Part part = fetchPart(player.getWonder());
         Boolean bool = part.getSame();
         HashMap<String, Integer> resourceList = player.getResourceList();
         HashMap<String, Integer> sortedResourceList = new HashMap<String, Integer>();
         if(bool == false) {
+            System.out.println(false);
             resourceList.forEach((key, value) -> {
                 if(value > 0) {
                     player.setCount(player.getCount()+1);
@@ -101,6 +103,7 @@ public class GameMaster {
             });
         }
         if(bool == true) {
+            System.out.println(true);
             resourceList.forEach((key, value) -> {
                 if(value > player.getCount()) {
                     player.setCount(value);
@@ -110,19 +113,33 @@ public class GameMaster {
             });
         }
         if(checkBuild(player) == true) {
-            part.setIsBuilt(true);
-            sortedResourceList.forEach((key1, value1) -> {
-                int value = resourceList.get(key1)-value1;
-                resourceList.replace(key1, value1, value);
+            sortedResourceList.forEach((key,value) -> {
+                int value1 = resourceList.get(key);
+                int value2 = value1 - value;
+                resourceList.replace(key, value1, value2);
             });
+            part.setIsBuilt(true);
         }
         if(checkBuild(player) == false) {
+            int nb = Integer.valueOf(player.getCount());
+            System.out.println("oldv"+nb);
             player.setCount(player.getCount()+player.getPiece());
+            System.out.println("new"+player.getCount());
+            int nbp = player.getCount() - nb;
+            System.out.println("nbp"+nbp);
             if(checkBuild(player) == true) {
+                sortedResourceList.forEach((key,value) -> {
+                    int value1 = resourceList.get(key);
+                    int value2 = value1 - value;
+                    resourceList.replace(key, value1, value2);
+                });
+                player.setPiece(nbp-(part.getCount()-nb));
                 part.setIsBuilt(true);
+
             }
         }
-    }
+    }   
+
 
     public Boolean checkBuild(Player player) {
         Part part = fetchPart(player.getWonder());
