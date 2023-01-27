@@ -93,6 +93,14 @@ public class PlayerView implements Subscriber {
 
     private HBox rescourceVerreBox;
 
+    private HBox inventoryVPBox;
+
+    private HBox inventorypieceBox;
+
+    private Image pieceImage;
+
+    private ImageView pieceImageView;
+
     public PlayerView(EventHandler<ActionEvent> eventHandler) {
         this.controller = eventHandler;
 
@@ -134,8 +142,10 @@ public class PlayerView implements Subscriber {
         this.verreImage = new Image(new File("src/main/Ressources/icones/Verre.png").toURI().toString());
         this.verreImageView = new ImageView(this.verreImage); 
 
-        this.pieceLabel = new Label("Piece : ");
+        this.pieceLabel = new Label(" x ");
         this.pieceLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+        this.pieceImage = new Image(new File("src/main/Ressources/icones/or.png").toURI().toString());
+        this.pieceImageView = new ImageView(this.pieceImage); 
 
         this.bouclierLabel = new Label("Bouclier : ");
         this.bouclierLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
@@ -191,9 +201,17 @@ public class PlayerView implements Subscriber {
         this.resourceBox.getChildren().addAll(this.rescourceBoisBox, this.rescourcePierreBox, this.rescourcePapierBox, this.rescourceVerreBox);
 
         this.inventoryBox = new VBox();
+            this.inventoryVPBox = new HBox();
+            this.inventoryVPBox.getChildren().addAll(this.vPLabel);
+            
+            //
+
+            this.inventorypieceBox = new HBox();
+            this.inventorypieceBox.getChildren().addAll(this.pieceLabel, this.pieceImageView);
+
         this.inventoryBox.setAlignment(Pos.CENTER);
         this.inventoryBox.setSpacing(30);
-        this.inventoryBox.getChildren().addAll(this.vPLabel, this.bouclierLabel, this.pieceLabel);
+        this.inventoryBox.getChildren().addAll(this.vPLabel, this.bouclierLabel, this.inventorypieceBox);
 
         //HBox en haut, pour des pions et tt
         this.hBoxTop = new HBox();
@@ -242,7 +260,7 @@ public class PlayerView implements Subscriber {
         this.pierreLabel.setText(" x "+this.player.getResourceList().get("Pierre"));
         this.papierLabel.setText(" x "+this.player.getResourceList().get("Papier"));
         this.verreLabel.setText(" x "+this.player.getResourceList().get("Verre"));
-        this.pieceLabel.setText("Piece : "+this.player.getPiece());
+        this.pieceLabel.setText(this.player.getPiece() + " x ");
         this.vPLabel.setText("Points : "+this.player.getPoint());
         this.bouclierLabel.setText("Bouclier : "+this.player.getBouclier());
         
