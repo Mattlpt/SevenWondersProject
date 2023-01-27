@@ -79,6 +79,8 @@ public class WonderSetUpView implements Subscriber {
 
 
         this.title = new Label("Choisissez votre merveille");
+        this.title.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: white;");
+        this.title.setEffect(new DropShadow(1, Color.BLACK));
         this.title.setId("title");
         this.titleBox = new HBox();
         this.titleBox.setId("titleBox");
@@ -89,6 +91,7 @@ public class WonderSetUpView implements Subscriber {
 
 
         this.wonderChoiceLabel = new Label("Votre choix :");
+        this.wonderChoiceLabel.setStyle("-fx-font-size: 13pt; -fx-font-weight: bold; -fx-text-fill: white;");
         this.wonderChoiceBox = new VBox();
         this.wonderChoiceBox.setId("wonderChoice");
         this.wonderChoiceBox.setAlignment(Pos.CENTER);
@@ -97,6 +100,7 @@ public class WonderSetUpView implements Subscriber {
         this.wonderChoiceBox.getChildren().add(this.wonderChoiceLabel);
 
         this.wonderListLabel = new Label("Choisissez parmis :");
+        this.wonderListLabel.setStyle("-fx-font-size: 13pt; -fx-font-weight: bold; -fx-text-fill: white;");
         this.wonderListBox = new VBox();
         this.wonderListBox.setId("wonderList");
         this.wonderListBox.setAlignment(Pos.CENTER);
