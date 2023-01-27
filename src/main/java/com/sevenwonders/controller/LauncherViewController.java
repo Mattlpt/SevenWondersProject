@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 
-public class LauncherViewController implements Subscriber{
+public class LauncherViewController{
 
     GameMaster gameMaster;
     EventHandler eventHandler;
@@ -34,10 +34,6 @@ public class LauncherViewController implements Subscriber{
         this.gameMaster = gameMaster;
     }
 
-    @Override
-    public void update(Game game) {
-
-    }
 
     public EventHandler<ActionEvent> getHandler() {
         return this.eventHandler;
