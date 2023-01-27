@@ -38,6 +38,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BorderPane;
@@ -111,7 +112,8 @@ public class GameMaster {
         Part part = fetchPart(player.getWonder());
         int nb = part.getCount();
         if(player.getCount() >= nb) {
-
+            part.setIsBuilt(true);
+            System.out.println("built !!!!!!!!!!!!!");
         }
     }
 
@@ -125,6 +127,12 @@ public class GameMaster {
         wonderList.add(new Olympie());
         wonderList.add(new Rhodes());
         
+    }
+
+    public void buildWonder(Player player, VBox vBox) {
+        for(int i=player.getWonder().getParts().length-1; i>=0; i--) {
+            vBox.getChildren().add(new ImageView(player.getWonder().getParts()[i].getImage()));
+        }
     }
 
     public void setPlayers(int nb) {

@@ -1,5 +1,9 @@
 package com.sevenwonders.wonder;
 
+import java.io.File;
+
+import javafx.scene.image.Image;
+
 public class Part {
     private String name;
     private boolean same;
@@ -7,6 +11,7 @@ public class Part {
     private int vicoryPoint;
     private String bonus;
     private Boolean isBuilt;
+    private Image image;
 
     public Part(String name, boolean same, int count, int vicoryPoint, String bonus) {
         this.name = name;
@@ -15,6 +20,11 @@ public class Part {
         this.vicoryPoint = vicoryPoint;
         this.bonus = bonus;
         this.isBuilt = false;
+        this.image = new Image(new File("src/main/Ressources/Wonders/Alexandrie/Part_Constructions/wonder"+this.name+".png").toURI().toString());
+    }
+
+    public void setIsBuilt(Boolean bool) {
+        this.isBuilt = bool;
     }
 
     public String getName() {
@@ -39,6 +49,10 @@ public class Part {
 
     public boolean getIsBuilt() {
         return this.isBuilt;
+    }
+
+    public Image getImage() {
+        return this.image;
     }
 
 }

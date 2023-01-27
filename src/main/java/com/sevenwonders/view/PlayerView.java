@@ -10,6 +10,7 @@ import com.sevenwonders.GameMaster;
 import com.sevenwonders.Player;
 import com.sevenwonders.Subscriber;
 
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -131,8 +132,10 @@ public class PlayerView implements Subscriber {
 
         //VBox Dec 
         this.wonderBox = new VBox(); 
+        this.wonderBox.setId("wonderBox");
         this.wonderBox.setAlignment(Pos.CENTER);
-        this.wonderBox.getChildren().add(this.imageViewDeck); 
+        
+         
 
         this.hBoxHaut = new HBox();
         this.hBoxHaut.setAlignment(Pos.CENTER);
@@ -206,6 +209,10 @@ public class PlayerView implements Subscriber {
 
     public Scene getScene() {
         return this.playerView;
+    }
+
+    public BorderPane getLayout() {
+        return this.layout;
     }
 
 }
