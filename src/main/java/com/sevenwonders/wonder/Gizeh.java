@@ -1,5 +1,7 @@
 package com.sevenwonders.wonder;
 
+import com.sevenwonders.Card.DeckOfCards;
+
 import javafx.scene.paint.Color;
 
 public class Gizeh extends Wonder{
@@ -7,6 +9,8 @@ public class Gizeh extends Wonder{
         this.name = "Gizeh";
         this.color = Color.web("a35f38"); 
         this.parts = new Part[5];
+        this.deck = new DeckOfCards(30, true);
+        setParts();
     }
 
     @Override

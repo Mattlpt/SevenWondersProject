@@ -1,5 +1,7 @@
 package com.sevenwonders.wonder;
 
+import com.sevenwonders.Card.DeckOfCards;
+
 import javafx.scene.paint.Color;
 
 public class Halicarnasse extends Wonder{
@@ -7,6 +9,8 @@ public class Halicarnasse extends Wonder{
         this.name = "Halicarnasse";
         this.color = Color.web("4f456d"); 
         this.parts = new Part[5];
+        this.deck = new DeckOfCards(30, true);
+        setParts();
     }
     
     @Override
