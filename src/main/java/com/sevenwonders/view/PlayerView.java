@@ -122,6 +122,11 @@ public class PlayerView implements Subscriber {
         this.imageViewDeck = new ImageView(this.imageDeck);  
 
         //HBox en bas, pour les trois boutons
+
+        VBox mainDrawBox = new VBox();
+        mainDrawBox.setAlignment(Pos.TOP_LEFT);
+        mainDrawBox.getChildren().add(this.mainDrawView);
+        
         this.hBoxBottom = new HBox();
         this.hBoxBottom.setAlignment(Pos.CENTER);
         this.hBoxBottom.setSpacing(30);
@@ -154,10 +159,7 @@ public class PlayerView implements Subscriber {
 
         this.hBoxHaut = new HBox();
         this.hBoxHaut.setAlignment(Pos.CENTER);
-        
-        VBox mainDrawBox = new VBox();
-        mainDrawBox.setAlignment(Pos.TOP_LEFT);
-        mainDrawBox.getChildren().add(this.mainDrawView);
+
 
         //HBox au milieu, pour dec et pioches
         this.hBoxBas = new HBox(); 
