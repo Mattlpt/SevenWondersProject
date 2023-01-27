@@ -42,7 +42,7 @@ public class PlayerSetUpView implements Subscriber{
     Label setUpLabel;
     TextField setUpTextField;
     Button setUpButton;
-    final String imageURI2 = new File("src/main/resources/images/Scene/7-wonders-ChosePlayerPage.jpg").toURI().toString(); 
+    final String imageURI2 = new File("src/main/Ressources/Screen Background/7-wonders-second-edition-board-game-art.jpg").toURI().toString(); 
     final Image image2 = new Image(imageURI2);
     final ImageView imageView2 = new ImageView(image2); 
     BackgroundImage backgroundImage2 = new BackgroundImage(image2, null, null, null, null);
