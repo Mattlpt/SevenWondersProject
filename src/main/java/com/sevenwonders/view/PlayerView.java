@@ -65,6 +65,28 @@ public class PlayerView implements Subscriber {
 
     private EventHandler<ActionEvent> controller;
 
+    private Image bouclierImage;
+
+    private ImageView bouclierImageView;
+
+    private ImageView boisImageView;
+
+    private Image boisImage;
+
+    private HBox rescourceBoisBox;
+
+    private Image pierreImage;
+
+    private ImageView pierreImageView;
+
+    private HBox rescourcePierreBox;
+
+    private HBox rescourcePapierBox;
+
+    private Image papierImage;
+
+    private ImageView papierImageView;
+
     public PlayerView(EventHandler<ActionEvent> eventHandler) {
         this.controller = eventHandler;
 
@@ -85,16 +107,23 @@ public class PlayerView implements Subscriber {
         this.infoButton = new Button("Button"); 
         this.infoButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
 
-        this.boisLabel = new Label("Bois : ");
+        //BOIS
+        this.boisLabel = new Label(" x ");
         this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+        this.boisImage = new Image(new File("src/main/Ressources/icones/BOIS.png").toURI().toString());
+        this.boisImageView = new ImageView(this.boisImage); 
 
-        this.pierreLabel = new Label("Pierre : ");
-        this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+        this.pierreLabel = new Label(" x ");
+        this.pierreLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+        this.pierreImage = new Image(new File("src/main/Ressources/icones/pierre.png").toURI().toString());
+        this.pierreImageView = new ImageView(this.pierreImage); 
 
-        this.papierLabel = new Label("Papier");
-        this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+        this.papierLabel = new Label(" x ");
+        this.papierLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+        this.papierImage = new Image(new File("src/main/Ressources/icones/papier.png").toURI().toString());
+        this.papierImageView = new ImageView(this.papierImage); 
 
-        this.verreLabel = new Label("Verre");
+        this.verreLabel = new Label(" x ");
         this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
 
         this.pieceLabel = new Label("Piece : ");
@@ -102,6 +131,8 @@ public class PlayerView implements Subscriber {
 
         this.bouclierLabel = new Label("Bouclier : ");
         this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+        this.bouclierImage = new Image(new File("").toURI().toString());
+        this.bouclierImageView = new ImageView(this.bouclierImage); 
 
         this.vPLabel = new Label("Points : ");
         this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
@@ -126,7 +157,7 @@ public class PlayerView implements Subscriber {
         VBox mainDrawBox = new VBox();
         mainDrawBox.setAlignment(Pos.TOP_LEFT);
         mainDrawBox.getChildren().add(this.mainDrawView);
-        
+
         this.hBoxBottom = new HBox();
         this.hBoxBottom.setAlignment(Pos.CENTER);
         this.hBoxBottom.setSpacing(30);
@@ -134,10 +165,19 @@ public class PlayerView implements Subscriber {
         this.hBoxBottom.getChildren().addAll(this.leftButton, this.centreButton, this.rightButton);
 
         this.resourceBox = new VBox();
+            this.rescourceBoisBox = new HBox(); 
+            this.rescourceBoisBox.getChildren().addAll(this.boisImageView, this.boisLabel); 
+
+            this.rescourcePierreBox = new HBox();
+            this.rescourcePierreBox.getChildren().addAll(this.pierreImageView, this.pierreLabel);
+
+            this.rescourcePapierBox = new HBox(); 
+            this.rescourcePapierBox.getChildren().addAll(this.papierImageView, this.papierLabel);
+
         this.resourceBox.setAlignment(Pos.CENTER);
         this.resourceBox.setSpacing(30);
         this.resourceBox.setPadding(new Insets(20,0,0,0)); 
-        this.resourceBox.getChildren().addAll(this.boisLabel, this.pierreLabel, this.papierLabel, this.verreLabel);
+        this.resourceBox.getChildren().addAll(this.rescourceBoisBox, this.rescourcePierreBox, this.rescourcePapierBox, this.verreLabel);
 
         this.inventoryBox = new VBox();
         this.inventoryBox.setAlignment(Pos.CENTER);
@@ -187,10 +227,10 @@ public class PlayerView implements Subscriber {
         ArrayList<Player> playerList = game.getPlayerList();
         int playerId = game.getMaster().fetchPlayerId(this.player);
         Player lastPlayer = game.getPlayerList().get((playerId+(playerList.size()-1))%playerList.size());
-        this.boisLabel.setText("Bois : "+this.player.getResourceList().get("Bois"));
-        this.pierreLabel.setText("Pierre : "+this.player.getResourceList().get("Pierre"));
-        this.papierLabel.setText("Papier : "+this.player.getResourceList().get("Papier"));
-        this.verreLabel.setText("Verre : "+this.player.getResourceList().get("Verre"));
+        this.boisLabel.setText(" x "+this.player.getResourceList().get("Bois"));
+        this.pierreLabel.setText(" x "+this.player.getResourceList().get("Pierre"));
+        this.papierLabel.setText(" x "+this.player.getResourceList().get("Papier"));
+        this.verreLabel.setText(" x "+this.player.getResourceList().get("Verre"));
         this.pieceLabel.setText("Piece : "+this.player.getPiece());
         this.vPLabel.setText("Points : "+this.player.getPoint());
         this.bouclierLabel.setText("Bouclier : "+this.player.getBouclier());
