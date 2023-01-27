@@ -87,6 +87,12 @@ public class PlayerView implements Subscriber {
 
     private ImageView papierImageView;
 
+    private Image verreImage;
+
+    private ImageView verreImageView;
+
+    private HBox rescourceVerreBox;
+
     public PlayerView(EventHandler<ActionEvent> eventHandler) {
         this.controller = eventHandler;
 
@@ -124,18 +130,20 @@ public class PlayerView implements Subscriber {
         this.papierImageView = new ImageView(this.papierImage); 
 
         this.verreLabel = new Label(" x ");
-        this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+        this.verreLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+        this.verreImage = new Image(new File("src/main/Ressources/icones/Verre.png").toURI().toString());
+        this.verreImageView = new ImageView(this.verreImage); 
 
         this.pieceLabel = new Label("Piece : ");
-        this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+        this.pieceLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
 
         this.bouclierLabel = new Label("Bouclier : ");
-        this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+        this.bouclierLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
         this.bouclierImage = new Image(new File("").toURI().toString());
         this.bouclierImageView = new ImageView(this.bouclierImage); 
 
         this.vPLabel = new Label("Points : ");
-        this.boisLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
+        this.vPLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
 
 
         this.leftDrawn = new Image(new File("src/main/Ressources/Card/BlueCard.png").toURI().toString());
@@ -174,10 +182,13 @@ public class PlayerView implements Subscriber {
             this.rescourcePapierBox = new HBox(); 
             this.rescourcePapierBox.getChildren().addAll(this.papierImageView, this.papierLabel);
 
+            this.rescourceVerreBox = new HBox();
+            this.rescourceVerreBox.getChildren().addAll(this.verreImageView, this.verreLabel);
+
         this.resourceBox.setAlignment(Pos.CENTER);
         this.resourceBox.setSpacing(30);
         this.resourceBox.setPadding(new Insets(20,0,0,0)); 
-        this.resourceBox.getChildren().addAll(this.rescourceBoisBox, this.rescourcePierreBox, this.rescourcePapierBox, this.verreLabel);
+        this.resourceBox.getChildren().addAll(this.rescourceBoisBox, this.rescourcePierreBox, this.rescourcePapierBox, this.rescourceVerreBox);
 
         this.inventoryBox = new VBox();
         this.inventoryBox.setAlignment(Pos.CENTER);
