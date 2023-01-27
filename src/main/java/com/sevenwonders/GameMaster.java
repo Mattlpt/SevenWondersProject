@@ -88,12 +88,15 @@ public class GameMaster {
     }
 
     public void resourceCount(Player player) {
-        Boolean bool = fetchPart(player.getWonder()).getSame();
+        Part part = fetchPart(player.getWonder());
+        Boolean bool = part.getSame();
         HashMap<String, Integer> resourceList = player.getResourceList();
+        HashMap<String, Integer> sortedResourceList = new HashMap<String, Integer>();
         if(bool == false) {
             resourceList.forEach((key, value) -> {
                 if(value > 0) {
                     player.setCount(player.getCount()+1);
+                    sortedResourceList.put(key, 1);
                 }
             });
         }
@@ -101,18 +104,30 @@ public class GameMaster {
             resourceList.forEach((key, value) -> {
                 if(value > player.getCount()) {
                     player.setCount(value);
+                    sortedResourceList.clear();
+                    sortedResourceList.put(key, value);
                 } 
             });
         }
-        player.setCount(player.getCount()+player.getPiece());
-        checkBuild(player);
+        if(checkBuild(player) == true) {
+            part.setIsBuilt(true);
+        }
+        if(checkBuild(player) == false) {
+            player.setCount(player.getCount()+player.getPiece());
+            if(checkBuild(player) == true) {
+                part.setIsBuilt(true);
+            }
+        }
     }
 
-    public void checkBuild(Player player) {
+    public Boolean checkBuild(Player player) {
         Part part = fetchPart(player.getWonder());
         int nb = part.getCount();
         if(player.getCount() >= nb) {
-            part.setIsBuilt(true);
+            return true;
+        }
+        else {
+            return false;
         }
     }
 
