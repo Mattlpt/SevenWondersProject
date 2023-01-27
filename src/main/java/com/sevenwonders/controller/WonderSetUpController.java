@@ -62,11 +62,25 @@ public class WonderSetUpController {
                     counter += 1;
                 }
                 if(counter == playerList.size()) {
-                    getMaster().getGame().playerView.setPlayer(getMaster().getGame().getPlayerList().get(0));
-                    gameMaster.notifySubscribers();
-                    window.setScene(getMaster().getGame().playerView.getScene());
-                    gameMaster.buildWonder(getMaster().getGame().getPlayerList().get(0),(VBox) getMaster().fetchChildren((Parent)getMaster().getGame().playerView.getLayout().getCenter(), "wonderBox"));
-                    window.setFullScreen(true);
+
+                    for (int i = 0 ; i < playerList.size()  ; i++){
+
+                        
+                    
+                        getMaster().getGame().playerView.setPlayer(getMaster().getGame().getPlayerList().get(i));
+                        gameMaster.notifySubscribers();
+                        window.setScene(getMaster().getGame().playerView.getScene());
+                        gameMaster.buildWonder(getMaster().getGame().getPlayerList().get(i),(VBox) getMaster().fetchChildren((Parent)getMaster().getGame().playerView.getLayout().getCenter(), "wonderBox"));
+                        
+                        
+                        
+                    }
+
+                    // getMaster().getGame().playerView.setPlayer(getMaster().getGame().getPlayerList().get(0));
+                    // gameMaster.notifySubscribers();
+                    // window.setScene(getMaster().getGame().playerView.getScene());
+                    // gameMaster.buildWonder(getMaster().getGame().getPlayerList().get(0),(VBox) getMaster().fetchChildren((Parent)getMaster().getGame().playerView.getLayout().getCenter(), "wonderBox"));
+                    // window.setFullScreen(true);
                 }
                 
             }    
