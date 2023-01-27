@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class PlayerSetUpViewController implements Subscriber {
+public class PlayerSetUpViewController{
 
     private GameMaster gameMaster;
     EventHandler<ActionEvent> eventHandler;
@@ -51,11 +51,11 @@ public class PlayerSetUpViewController implements Subscriber {
     }
 
 
-    @Override
-    public void update(Game game) {
-        // TODO Auto-generated method stub
+    // @Override
+    // public void update(Game game) {
+    //     // TODO Auto-generated method stub
         
-    }
+    // }
 
     public EventHandler<ActionEvent> getHandler() {
         return this.eventHandler;
