@@ -1,5 +1,7 @@
 package com.sevenwonders.wonder;
 
+import com.sevenwonders.Card.DeckOfCards;
+
 import javafx.scene.paint.Color;
 
 public class Rhodes extends Wonder {
@@ -7,6 +9,7 @@ public class Rhodes extends Wonder {
         this.name = "Rhodes";
         this.color = Color.web("cd4e49"); 
         this.parts = new Part[5];
+        this.deck = new DeckOfCards(30, true);
         setParts();
     }
 

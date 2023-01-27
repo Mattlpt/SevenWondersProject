@@ -1,5 +1,7 @@
 package com.sevenwonders.wonder;
 
+import com.sevenwonders.Card.DeckOfCards;
+
 import javafx.scene.paint.Color;
 
 public class Olympie extends Wonder {
@@ -7,6 +9,8 @@ public class Olympie extends Wonder {
         this.name = "Olympie";
         this.color = Color.web("efc36d"); 
         this.parts = new Part[5];
+        this.deck = new DeckOfCards(30, true);
+        setParts();
     }
 
     @Override

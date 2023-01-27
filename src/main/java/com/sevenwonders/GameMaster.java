@@ -4,9 +4,25 @@ import javafx.event.EventHandler;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
-import com.sevenwonders.wonder.*;
+import com.sevenwonders.Card.Card;
+import com.sevenwonders.Card.DeckOfCards;
+import com.sevenwonders.Card.GreyCard;
+import com.sevenwonders.Card.Resource;
+import com.sevenwonders.Card.YellowCard;
+import com.sevenwonders.wonder.Wonder;
+import com.sevenwonders.wonder.Alexendrie;
+import com.sevenwonders.wonder.Babylon;
+import com.sevenwonders.wonder.Ephese;
+import com.sevenwonders.wonder.Gizeh;
+import com.sevenwonders.wonder.Halicarnasse;
+import com.sevenwonders.wonder.Olympie;
+import com.sevenwonders.wonder.Part;
+import com.sevenwonders.wonder.Rhodes;
+
 
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
@@ -29,6 +45,58 @@ public class GameMaster {
         this.subscribers = new ArrayList<Subscriber>();
     }
 
+    public void draw(Player player, DeckOfCards deck) {
+        if(deck.getContent().size() > 0) {
+            Card pick = deck.getContent().get(0);
+            if(pick instanceof GreyCard) {
+                GreyCard card = (GreyCard) pick;
+                Resource resource = card.getResource();
+                HashMap<String, Integer> resourceList = player.getResourceList();
+                resourceList.forEach((key, value) -> {
+                    if(key == resource.getName()) {
+                        resourceList.replace(key, value, value+1);
+                    }
+                });
+            }
+            if(pick instanceof YellowCard) {
+                YellowCard card = (YellowCard) pick;
+                player.setPiece(player.getPiece() + 1);
+                
+            }
+            deck.getContent().remove(pick);
+        }
+        resourceCount(player);
+    }
+
+    public void resourceCount(Player player) {
+        Boolean bool = fetchPart(player.getWonder()).getSame();
+        HashMap<String, Integer> resourceList = player.getResourceList();
+        if(bool == false) {
+            resourceList.forEach((key, value) -> {
+                if(value > 0) {
+                    player.setCount(player.getCount()+1);
+                }
+            });
+        }
+        if(bool == true) {
+            resourceList.forEach((key, value) -> {
+                if(value > player.getCount()) {
+                    player.setCount(value);
+                } 
+            });
+        }
+        player.setCount(player.getCount()+player.getPiece());
+        checkBuild(player);
+    }
+
+    public void checkBuild(Player player) {
+        Part part = fetchPart(player.getWonder());
+        int nb = part.getCount();
+        if(player.getCount() >= nb) {
+
+        }
+    }
+
     public void setWonders() {
         ArrayList<Wonder> wonderList = this.game.getWonderList();
         wonderList.add(new Alexendrie());
@@ -49,6 +117,23 @@ public class GameMaster {
         Collections.shuffle(playerList);
     }
 
+    public Player fetchPlayer(int nb) {
+        ArrayList<Player> playerList = this.game.getPlayerList();
+        int index = nb%playerList.size();
+        Player player = playerList.get(index);
+        return player;
+    }
+
+    public int fetchPlayerId(Player player) {
+        int nb = 0;
+        for(int i=0; i<this.game.getPlayerList().size(); i++) {
+            if(player == this.game.getPlayerList().get(i)) {
+                nb = i;
+            }
+        }
+        return nb;
+    }
+
     public static Wonder fetchWonder(ArrayList<Wonder> list, String name) {
         Wonder wonder = null;
         for(int i=0; i<list.size(); i++) {
@@ -59,6 +144,20 @@ public class GameMaster {
         }
         return wonder;
     }
+
+    public static Part fetchPart(Wonder wonder) {
+        Part part = null;
+        Part[] parts = wonder.getParts();
+        for(int i=0; i<parts.length; i++) {
+            if(parts[i].getIsBuilt() == false) {
+                part = parts[i];
+                break;
+            }
+        }
+        return part;
+    }
+
+
 
     public void WonderSetUpViewSetUp() {
         ArrayList<Wonder> wonderList = this.game.getWonderList();

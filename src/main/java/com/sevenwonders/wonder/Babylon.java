@@ -1,12 +1,15 @@
 package com.sevenwonders.wonder;
 
+import com.sevenwonders.Card.DeckOfCards;
+
 import javafx.scene.paint.Color;
 
 public class Babylon extends Wonder{
-    public Babylon() {
+    public Babylon () {
         this.name = "Babylon";
         this.color = Color.web("336a51"); ; 
         this.parts = new Part[5];
+        this.deck = new DeckOfCards(30, true);
         setParts();
     }
 

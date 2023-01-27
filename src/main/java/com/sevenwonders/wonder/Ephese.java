@@ -1,5 +1,7 @@
 package com.sevenwonders.wonder;
 
+import com.sevenwonders.Card.DeckOfCards;
+
 import javafx.scene.paint.Color;
 
 public class Ephese extends Wonder {
@@ -7,6 +9,8 @@ public class Ephese extends Wonder {
         this.name = "Ephese";
         this.color = Color.web("be6b5f"); 
         this.parts = new Part[5];
+        this.deck = new DeckOfCards(30, true);
+        setParts();
     }
 
     @Override
