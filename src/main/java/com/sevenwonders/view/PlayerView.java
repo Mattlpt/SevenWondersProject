@@ -50,6 +50,7 @@ public class PlayerView implements Subscriber {
     Label verreLabel;
     Label pieceLabel;
     Label bouclierLabel;
+    Label vPLabel;
     Image leftDrawn;
     Image imageDeck;
     Image rightDrawn;
@@ -89,6 +90,7 @@ public class PlayerView implements Subscriber {
         this.verreLabel = new Label("Verre");
         this.pieceLabel = new Label("Piece : ");
         this.bouclierLabel = new Label("Bouclier : ");
+        this.vPLabel = new Label("Points : ");
 
         this.leftDrawn = new Image(new File("src/main/Ressources/Card/BlueCard.png").toURI().toString());
         this.leftDrawView = new ImageView(this.leftDrawn);
@@ -119,7 +121,7 @@ public class PlayerView implements Subscriber {
         this.inventoryBox = new VBox();
         this.inventoryBox.setAlignment(Pos.CENTER);
         this.inventoryBox.setSpacing(30);
-        this.inventoryBox.getChildren().addAll(this.bouclierLabel, this.pieceLabel);
+        this.inventoryBox.getChildren().addAll(this.vPLabel, this.bouclierLabel, this.pieceLabel);
 
         //HBox en haut, pour des pions et tt
         this.hBoxTop = new HBox();
@@ -167,6 +169,9 @@ public class PlayerView implements Subscriber {
         this.papierLabel.setText("Papier : "+this.player.getResourceList().get("Papier"));
         this.verreLabel.setText("Verre : "+this.player.getResourceList().get("Verre"));
         this.pieceLabel.setText("Piece : "+this.player.getPiece());
+        this.vPLabel.setText("Points : "+this.player.getPoint());
+        this.bouclierLabel.setText("Bouclier : "+this.player.getBouclier());
+        
         if(this.player.getWonder().getDeckOfCards().getContent().size() > 0) {
             this.player.getWonder().getDeckOfCards().setImage(this.player.getWonder().getName());
             this.leftDrawView.setImage(this.player.getWonder().getDeckOfCards().getImage());

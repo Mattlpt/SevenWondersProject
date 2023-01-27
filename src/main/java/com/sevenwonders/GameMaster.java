@@ -15,6 +15,7 @@ import com.sevenwonders.Card.BlueCard;
 import com.sevenwonders.Card.Card;
 import com.sevenwonders.Card.DeckOfCards;
 import com.sevenwonders.Card.GreyCard;
+import com.sevenwonders.Card.RedCard;
 import com.sevenwonders.Card.Resource;
 import com.sevenwonders.Card.YellowCard;
 import com.sevenwonders.wonder.Wonder;
@@ -74,7 +75,11 @@ public class GameMaster {
             }
             if(pick instanceof BlueCard) {
                 BlueCard card = (BlueCard) pick;
-                
+                player.setPoint(player.getPoint()+card.getVictoryPoint());
+            }
+            if(pick instanceof RedCard) {
+                RedCard card = (RedCard) pick;
+                player.setBouclier(player.getBouclier()+card.getBouclier());
             }
             deck.getContent().remove(pick);
         }

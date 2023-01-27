@@ -15,14 +15,17 @@ public class DeckOfCards {
         this.content = new ArrayList<Card>();
         this.face_Up = face_Up;
         for(int i=0; i<size; i++) {
-            if(i < size/1) {
+            if(i < size/4) {
                 this.content.add(new GreyCard(new Resource("Bois")));
             }
-            if(i>= size/3 && i <= 2*size/3) {
+            if(i>= size/4 && i <= size/2) {
                 this.content.add(new YellowCard());
             }
-            if(i > 2*size/3) {
+            if(i > size/2 && i < 3*size/4) {
                 this.content.add(new BlueCard(i));
+            }
+            if(i >= 3*size/4) {
+                this.content.add(new RedCard(2));
             }
         }
         Collections.shuffle(this.content);
