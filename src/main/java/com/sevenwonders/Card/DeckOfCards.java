@@ -30,7 +30,7 @@ public class DeckOfCards {
             this.image = this.content.get(0).getImage();
         }
         if(this.face_Up == false) {
-            this.image = new Image((new File("src/main/Ressources/Card/back/Back+"+string+"Card.png")).toURI().toString());
+            this.image = new Image((new File("src/main/Ressources/Card/back/Back"+string+"Card.png")).toURI().toString());
         }
     }
 
