@@ -2,6 +2,7 @@ package com.sevenwonders;
 
 import java.util.ArrayList;
 
+import com.sevenwonders.Card.DeckOfCards;
 import com.sevenwonders.controller.LauncherViewController;
 import com.sevenwonders.controller.PlayerSetUpViewController;
 import com.sevenwonders.controller.PlayerViewController;
@@ -17,6 +18,7 @@ public class Game implements Subscriber {
     GameMaster gameMaster;
     private ArrayList<Player> playerList;
     private ArrayList<Wonder> wonderList;
+    private DeckOfCards mainDraw;
     
     public LauncherView launcherView;
     public PlayerSetUpView playerSetUpView;
@@ -32,6 +34,8 @@ public class Game implements Subscriber {
         this.gameMaster = gameMaster;
         this.playerList = new ArrayList<Player>();
         this.wonderList = new ArrayList<Wonder>();
+        this.mainDraw = new DeckOfCards(30, false);
+
         this.launcherViewController = new LauncherViewController(this.gameMaster);
         this.setUpPlayerController = new PlayerSetUpViewController(this.gameMaster);
         this.wonderSetUpController = new WonderSetUpController(this.gameMaster);
@@ -55,5 +59,9 @@ public class Game implements Subscriber {
 
     public ArrayList<Wonder> getWonderList() {
         return this.wonderList;
+    }
+
+    public DeckOfCards getMainDraw() {
+        return this.mainDraw;
     }
 }

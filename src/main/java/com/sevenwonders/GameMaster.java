@@ -4,9 +4,22 @@ import javafx.event.EventHandler;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
-import com.sevenwonders.wonder.*;
+import com.sevenwonders.Card.Card;
+import com.sevenwonders.Card.DeckOfCards;
+import com.sevenwonders.Card.GreyCard;
+import com.sevenwonders.Card.Resource;
+import com.sevenwonders.wonder.Wonder;
+import com.sevenwonders.wonder.Alexendrie;
+import com.sevenwonders.wonder.Babylon;
+import com.sevenwonders.wonder.Ephese;
+import com.sevenwonders.wonder.Gizeh;
+import com.sevenwonders.wonder.Halicarnasse;
+import com.sevenwonders.wonder.Olympie;
+import com.sevenwonders.wonder.Rhodes;
+
 
 import javafx.beans.Observable;
 import javafx.collections.ObservableList;
@@ -27,6 +40,20 @@ public class GameMaster {
 
     public GameMaster(){
         this.subscribers = new ArrayList<Subscriber>();
+    }
+
+    public void draw(Player player, DeckOfCards deck) {
+        Card pick = deck.getContent().get(0);
+        if(pick instanceof GreyCard) {
+            GreyCard card = (GreyCard) pick;
+            Resource resource = card.getResource();
+            HashMap<String, Integer> resourceList = player.getResourceList();
+            resourceList.forEach((key, value) -> {
+                if(key == resource.getName()) {
+                    resourceList.replace(key, value, value+1);
+                }
+            });
+        }
     }
 
     public void setWonders() {

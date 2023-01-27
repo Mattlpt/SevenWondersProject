@@ -1,5 +1,7 @@
 package com.sevenwonders.wonder;
 
+import com.sevenwonders.Card.DeckOfCards;
+
 import javafx.scene.paint.Color;
 
 public class Alexendrie extends Wonder{
@@ -8,6 +10,7 @@ public class Alexendrie extends Wonder{
         this.name = "Alexandrie"; 
         this.color = Color.web("2a4f85"); ; 
         this.parts = new Part[5];
+        this.deck = new DeckOfCards(30, true);
         setParts();
 
     }
