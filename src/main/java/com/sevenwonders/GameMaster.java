@@ -94,6 +94,7 @@ public class GameMaster {
         };
         for(int i=0; i<wonderList.size(); i++) {
             Button button = new Button(wonderList.get(i).getName());
+            button.setStyle("-fx-min-width: 160px; -fx-pref-width: 160px; -fx-max-width: 160px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #dccaae; -fx-text-fill: white;");
             button.setOnAction(eventHandler);
             wonderListBox.getChildren().add(button);
         }
