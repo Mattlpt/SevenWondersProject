@@ -33,7 +33,7 @@ public class LauncherView implements Subscriber{
     public Timeline timeline = new Timeline();
     public KeyFrame kF ;
     public KeyFrame kF2;
-    final Image image = new Image(new File("src/main/Ressources/ressouces 7W 2/7wonders-cover-2.jpg").toURI().toString());
+    final Image image = new Image(new File("src/main/Ressources/Screen Background/7wonders-cover.jpg").toURI().toString());
     public final ImageView imageView = new ImageView(image); 
     BackgroundImage backgroundImage = new BackgroundImage(image, null, null, null, null);
     public Timeline timelineMouseExit;
@@ -44,7 +44,7 @@ public class LauncherView implements Subscriber{
         this.controller = eventHandler;
 
         // Fond
-        final Image image = new Image(new File("src/main/Ressources/ressouces 7W 2/7wonders-cover-2.jpg").toURI().toString());
+        final Image image = new Image(new File("src/main/Ressources/Screen Background/7wonders-cover.jpg").toURI().toString());
         final ImageView imageView = new ImageView(image); 
         BackgroundImage backgroundImage = new BackgroundImage(image, null, null, null, null);
 
