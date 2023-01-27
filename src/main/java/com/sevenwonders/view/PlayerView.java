@@ -10,6 +10,7 @@ import com.sevenwonders.GameMaster;
 import com.sevenwonders.Player;
 import com.sevenwonders.Subscriber;
 
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -34,6 +35,7 @@ public class PlayerView implements Subscriber {
     HBox hBoxBottom;
     HBox hBoxTop;
     VBox resourceBox;
+    VBox inventoryBox;
     VBox vBoxMilieu;
     HBox hBoxHaut;
     HBox hBoxBas;
@@ -48,6 +50,8 @@ public class PlayerView implements Subscriber {
     Label papierLabel;
     Label verreLabel;
     Label pieceLabel;
+    Label bouclierLabel;
+    Label vPLabel;
     Image leftDrawn;
     Image imageDeck;
     Image rightDrawn;
@@ -86,6 +90,8 @@ public class PlayerView implements Subscriber {
         this.papierLabel = new Label("Papier");
         this.verreLabel = new Label("Verre");
         this.pieceLabel = new Label("Piece : ");
+        this.bouclierLabel = new Label("Bouclier : ");
+        this.vPLabel = new Label("Points : ");
 
         this.leftDrawn = new Image(new File("src/main/Ressources/Card/BlueCard.png").toURI().toString());
         this.leftDrawView = new ImageView(this.leftDrawn);
@@ -111,7 +117,12 @@ public class PlayerView implements Subscriber {
         this.resourceBox = new VBox();
         this.resourceBox.setAlignment(Pos.CENTER);
         this.resourceBox.setSpacing(30);
-        this.resourceBox.getChildren().addAll(this.boisLabel, this.pierreLabel, this.pieceLabel);
+        this.resourceBox.getChildren().addAll(this.boisLabel, this.pierreLabel, this.papierLabel, this.verreLabel);
+
+        this.inventoryBox = new VBox();
+        this.inventoryBox.setAlignment(Pos.CENTER);
+        this.inventoryBox.setSpacing(30);
+        this.inventoryBox.getChildren().addAll(this.vPLabel, this.bouclierLabel, this.pieceLabel);
 
         //HBox en haut, pour des pions et tt
         this.hBoxTop = new HBox();
@@ -121,8 +132,10 @@ public class PlayerView implements Subscriber {
 
         //VBox Dec 
         this.wonderBox = new VBox(); 
+        this.wonderBox.setId("wonderBox");
         this.wonderBox.setAlignment(Pos.CENTER);
-        this.wonderBox.getChildren().add(this.imageViewDeck); 
+        
+         
 
         this.hBoxHaut = new HBox();
         this.hBoxHaut.setAlignment(Pos.CENTER);
@@ -142,6 +155,7 @@ public class PlayerView implements Subscriber {
         this.layout.setBottom(this.hBoxBottom);
         this.layout.setTop(this.hBoxTop);
         this.layout.setLeft(this.resourceBox);
+        this.layout.setRight(this.inventoryBox);
 
 
         this.playerView = new Scene(this.layout,1200,800);
@@ -158,6 +172,9 @@ public class PlayerView implements Subscriber {
         this.papierLabel.setText("Papier : "+this.player.getResourceList().get("Papier"));
         this.verreLabel.setText("Verre : "+this.player.getResourceList().get("Verre"));
         this.pieceLabel.setText("Piece : "+this.player.getPiece());
+        this.vPLabel.setText("Points : "+this.player.getPoint());
+        this.bouclierLabel.setText("Bouclier : "+this.player.getBouclier());
+        
         if(this.player.getWonder().getDeckOfCards().getContent().size() > 0) {
             this.player.getWonder().getDeckOfCards().setImage(this.player.getWonder().getName());
             this.leftDrawView.setImage(this.player.getWonder().getDeckOfCards().getImage());
@@ -192,6 +209,10 @@ public class PlayerView implements Subscriber {
 
     public Scene getScene() {
         return this.playerView;
+    }
+
+    public BorderPane getLayout() {
+        return this.layout;
     }
 
 }

@@ -1,6 +1,9 @@
 package com.sevenwonders;
 
 import javafx.event.EventHandler;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,9 +11,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+import com.sevenwonders.Card.BlueCard;
 import com.sevenwonders.Card.Card;
 import com.sevenwonders.Card.DeckOfCards;
 import com.sevenwonders.Card.GreyCard;
+import com.sevenwonders.Card.RedCard;
 import com.sevenwonders.Card.Resource;
 import com.sevenwonders.Card.YellowCard;
 import com.sevenwonders.wonder.Wonder;
@@ -32,8 +37,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 
 public class GameMaster {
@@ -62,6 +73,14 @@ public class GameMaster {
                 YellowCard card = (YellowCard) pick;
                 player.setPiece(player.getPiece() + 1);
                 
+            }
+            if(pick instanceof BlueCard) {
+                BlueCard card = (BlueCard) pick;
+                player.setPoint(player.getPoint()+card.getVictoryPoint());
+            }
+            if(pick instanceof RedCard) {
+                RedCard card = (RedCard) pick;
+                player.setBouclier(player.getBouclier()+card.getBouclier());
             }
             deck.getContent().remove(pick);
         }
@@ -93,7 +112,7 @@ public class GameMaster {
         Part part = fetchPart(player.getWonder());
         int nb = part.getCount();
         if(player.getCount() >= nb) {
-
+            part.setIsBuilt(true);
         }
     }
 
@@ -107,6 +126,12 @@ public class GameMaster {
         wonderList.add(new Olympie());
         wonderList.add(new Rhodes());
         
+    }
+
+    public void buildWonder(Player player, VBox vBox) {
+        for(int i=player.getWonder().getParts().length-1; i>=0; i--) {
+            vBox.getChildren().add(new ImageView(player.getWonder().getParts()[i].getImage()));
+        }
     }
 
     public void setPlayers(int nb) {
@@ -169,6 +194,10 @@ public class GameMaster {
             @Override
                 public void handle(ActionEvent event) {
                     Button eventButton = (Button) event.getSource();
+                    Scene scene = eventButton.getScene();
+                    Stage window = (Stage) scene.getWindow();
+                    BorderPane layout = (BorderPane) eventButton.getParent().getParent().getParent();
+                    layout.setBackground(new Background(new BackgroundImage(new Image(new File("src/main/Ressources/BackgroundWonders/Background"+eventButton.getText()+".png").toURI().toString()), null, null, null, null)));
                     HBox box = (HBox) eventButton.getParent().getParent();
                     VBox box1 = null;
                     VBox box2 = null;

@@ -10,6 +10,7 @@ import com.sevenwonders.GameMaster;
 import com.sevenwonders.Player;
 import com.sevenwonders.wonder.Wonder;
 
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -64,6 +65,8 @@ public class WonderSetUpController {
                     getMaster().getGame().playerView.setPlayer(getMaster().getGame().getPlayerList().get(0));
                     gameMaster.notifySubscribers();
                     window.setScene(getMaster().getGame().playerView.getScene());
+                    gameMaster.buildWonder(getMaster().getGame().getPlayerList().get(0),(VBox) getMaster().fetchChildren((Parent)getMaster().getGame().playerView.getLayout().getCenter(), "wonderBox"));
+                    window.setFullScreen(true);
                 }
                 
             }    
