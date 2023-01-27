@@ -113,7 +113,6 @@ public class GameMaster {
         int nb = part.getCount();
         if(player.getCount() >= nb) {
             part.setIsBuilt(true);
-            System.out.println("built !!!!!!!!!!!!!");
         }
     }
 
