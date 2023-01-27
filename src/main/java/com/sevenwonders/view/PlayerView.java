@@ -69,13 +69,19 @@ public class PlayerView implements Subscriber {
 
 
 
-        //Boutons 
+        //Boutons Centre
         Button centreButton = new Button("Button");
         centreButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
+        
+        //Bouton Gauche
         Button leftButton = new Button("Button"); 
         leftButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
+       
+        //Bouton Droit
         Button rightButton = new Button("Button"); 
         rightButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
+        
+        //Bouton Haut 
         Button infoButton = new Button("Button"); 
         infoButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
 
@@ -83,13 +89,9 @@ public class PlayerView implements Subscriber {
         hBoxHaut.getChildren().add(infoButton); 
 
         hBoxMilieu.getChildren().addAll(leftDrawView, vBoxDeck, rightDrawView);
-        // hBoxMilieu.getChildren().add(vBoxDeck);
-        // hBoxMilieu.getChildren().add(rightDrawView); 
         vBoxDeck.getChildren().add(imageViewDeck); 
-        // hBoxMilieu.getChildren().add(leftDrawView);
 
-
-
+        
         hBoxBas.getChildren().addAll(leftButton, centreButton, rightButton); 
 
         layout.setCenter(hBoxMilieu);
