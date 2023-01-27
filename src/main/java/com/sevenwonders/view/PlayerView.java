@@ -56,9 +56,17 @@ public class PlayerView implements Subscriber {
         VBox vBoxDeck = new VBox(); 
         vBoxDeck.setAlignment(Pos.CENTER);
 
+        Image leftDrawn = new Image(new File("src/main/Ressources/ressouces 7W 2/cardsTest.png").toURI().toString());
+        ImageView leftDrawView = new ImageView(leftDrawn);
+
         //DOCK
         Image imageDeck = new Image(new File("src/main/Ressources/wonder_alexandriaTEST.png").toURI().toString());
         ImageView imageViewDeck = new ImageView(imageDeck);
+
+        //Drown
+        Image rightDrawn = new Image(new File("src/main/Ressources/ressouces 7W 2/cardsTest.png").toURI().toString());
+        ImageView rightDrawView = new ImageView(rightDrawn);
+
 
 
         //Boutons 
@@ -74,8 +82,13 @@ public class PlayerView implements Subscriber {
 
         hBoxHaut.getChildren().add(infoButton); 
 
-        hBoxMilieu.getChildren().add(vBoxDeck);
+        hBoxMilieu.getChildren().addAll(leftDrawView, vBoxDeck, rightDrawView);
+        // hBoxMilieu.getChildren().add(vBoxDeck);
+        // hBoxMilieu.getChildren().add(rightDrawView); 
         vBoxDeck.getChildren().add(imageViewDeck); 
+        // hBoxMilieu.getChildren().add(leftDrawView);
+
+
 
         hBoxBas.getChildren().addAll(leftButton, centreButton, rightButton); 
 
