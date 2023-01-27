@@ -9,7 +9,8 @@ public class Player {
 
     private String name ;
     private Wonder wonder;
-    private HashMap<String, Integer> resourceList;  
+    private HashMap<String, Integer> resourceList;
+    private int count;  
 
     public Player(String name){
         this.name = name;
@@ -19,6 +20,7 @@ public class Player {
         this.resourceList.put("Pierre", 0);
         this.resourceList.put("Papier", 0);
         this.resourceList.put("Verre", 0);
+        this.count = 0;
     }
 
     public void setWonder(Wonder wonder) {
@@ -39,6 +41,10 @@ public class Player {
 
     public HashMap<String, Integer> getResourceList() {
         return this.resourceList;
+    }
+
+    public int getCount() {
+        return this.count;
     }
     
 }
