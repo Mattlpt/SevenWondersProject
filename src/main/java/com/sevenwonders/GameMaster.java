@@ -60,6 +60,7 @@ public class GameMaster {
             }
             if(pick instanceof YellowCard) {
                 YellowCard card = (YellowCard) pick;
+                player.setPiece(player.getPiece() + 1);
                 
             }
             deck.getContent().remove(pick);
@@ -69,24 +70,30 @@ public class GameMaster {
 
     public void resourceCount(Player player) {
         Boolean bool = fetchPart(player.getWonder()).getSame();
-        int count = player.getCount();
         HashMap<String, Integer> resourceList = player.getResourceList();
-        Set[] set = (Set[]) resourceList.keySet().toArray();
         if(bool == false) {
-            for(int i=0; i<set.length; i++) {
-                if(resourceList.get(set[i]) > 0) {
-                    count +=1;
+            resourceList.forEach((key, value) -> {
+                if(value > 0) {
+                    player.setCount(player.getCount()+1);
                 }
-            }
+            });
         }
         if(bool == true) {
-            for(int i=0; i<set.length; i++) {
-                if(resourceList.get(set[i]) > count) {
-                    count = resourceList.get(set[i]);
-                }
-                
-                
-            }
+            resourceList.forEach((key, value) -> {
+                if(value > player.getCount()) {
+                    player.setCount(value);
+                } 
+            });
+        }
+        player.setCount(player.getCount()+player.getPiece());
+        checkBuild(player);
+    }
+
+    public void checkBuild(Player player) {
+        Part part = fetchPart(player.getWonder());
+        int nb = part.getCount();
+        if(player.getCount() >= nb) {
+
         }
     }
 

@@ -1,10 +1,10 @@
 package com.sevenwonders.Card;
 
-import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 
 public class Card {
     protected String color;
-    protected ImageView imageView;
+    protected Image image;
 
     public Card() {}
 
@@ -16,7 +16,7 @@ public class Card {
         return this.color;
     }
 
-    public ImageView getImageView() {
-        return this.imageView;
+    public Image getImage() {
+        return this.image;
     }
 }

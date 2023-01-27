@@ -1,11 +1,16 @@
 package com.sevenwonders.Card;
 
+import java.io.File;
+
+import javafx.scene.image.Image;
+
 public class GreyCard extends Card {
     private Resource resource;
 
     public GreyCard(Resource resource) {
         this.color = "Grey";
         this.resource = resource;
+        this.image = new Image(new File("src/main/Ressources/Card/GreyCard.png").toURI().toString());
     }
 
     @Override

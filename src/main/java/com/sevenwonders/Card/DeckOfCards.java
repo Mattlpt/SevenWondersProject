@@ -1,14 +1,15 @@
 package com.sevenwonders.Card;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 
 public class DeckOfCards {
     private ArrayList<Card> content;
     private boolean face_Up;
-    private ImageView imageView;
+    private Image image;
 
     public DeckOfCards(int size, boolean face_Up) {
         this.content = new ArrayList<Card>();
@@ -24,12 +25,12 @@ public class DeckOfCards {
         Collections.shuffle(this.content);
     }
 
-    public void setView() {
+    public void setImage(String string) {
         if(this.face_Up == true) {
-            this.imageView = this.content.get(0).getImageView();
+            this.image = this.content.get(0).getImage();
         }
         if(this.face_Up == false) {
-            this.imageView =null;
+            this.image = new Image((new File("src/main/Ressources/Card/back/Back+"+string+"Card.png")).toURI().toString());
         }
     }
 
@@ -40,5 +41,8 @@ public class DeckOfCards {
 
     public ArrayList<Card> getContent() {
         return this.content;
+    }
+    public Image getImage() {
+        return this.image;
     }
 }

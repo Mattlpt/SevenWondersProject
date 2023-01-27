@@ -46,6 +46,7 @@ public class PlayerView implements Subscriber {
     Label pierreLabel;
     Label papierLabel;
     Label verreLabel;
+    Label pieceLabel;
     Image leftDrawn;
     Image imageDeck;
     Image rightDrawn;
@@ -79,6 +80,7 @@ public class PlayerView implements Subscriber {
         this.pierreLabel = new Label("Pierre : ");
         this.papierLabel = new Label("Papier");
         this.verreLabel = new Label("Verre");
+        this.pieceLabel = new Label("Piece : ");
 
         this.leftDrawn = new Image(new File("src/main/Ressources/Card/BlueCard.png").toURI().toString());
         this.leftDrawView = new ImageView(this.leftDrawn);
@@ -101,7 +103,7 @@ public class PlayerView implements Subscriber {
         this.resourceBox = new VBox();
         this.resourceBox.setAlignment(Pos.CENTER);
         this.resourceBox.setSpacing(30);
-        this.resourceBox.getChildren().addAll(this.boisLabel, this.pierreLabel);
+        this.resourceBox.getChildren().addAll(this.boisLabel, this.pierreLabel, this.pieceLabel);
 
         //HBox en haut, pour des pions et tt
         this.hBoxTop = new HBox();
@@ -146,14 +148,17 @@ public class PlayerView implements Subscriber {
         this.pierreLabel.setText("Pierre : "+this.player.getResourceList().get("Pierre"));
         this.papierLabel.setText("Papier : "+this.player.getResourceList().get("Papier"));
         this.verreLabel.setText("Verre : "+this.player.getResourceList().get("Verre"));
+        this.pieceLabel.setText("Piece : "+this.player.getPiece());
         if(this.player.getWonder().getDeckOfCards().getContent().size() > 0) {
-            this.leftDrawView.setImage(new Image(new File("src/main/Ressources/Card/"+this.player.getWonder().getDeckOfCards().getContent().get(0).getColor()+"Card.png").toURI().toString()));
+            this.player.getWonder().getDeckOfCards().setImage(this.player.getWonder().getName());
+            this.leftDrawView.setImage(this.player.getWonder().getDeckOfCards().getImage());
         }
         if(this.player.getWonder().getDeckOfCards().getContent().size() == 0) {
             this.leftDrawView.setImage(null);
         }
         if(lastPlayer.getWonder().getDeckOfCards().getContent().size() > 0) {
-            this.rightDrawView.setImage(new Image(new File("src/main/Ressources/Card/"+lastPlayer.getWonder().getDeckOfCards().getContent().get(0).getColor()+"Card.png").toURI().toString()));
+            lastPlayer.getWonder().getDeckOfCards().setImage(this.player.getWonder().getName());
+            this.rightDrawView.setImage(lastPlayer.getWonder().getDeckOfCards().getImage());
         }
         if(lastPlayer.getWonder().getDeckOfCards().getContent().size() == 0) {
             this.rightDrawView.setImage(null);
