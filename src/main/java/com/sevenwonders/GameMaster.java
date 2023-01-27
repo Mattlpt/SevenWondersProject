@@ -51,7 +51,7 @@ public class GameMaster {
     public void setWonders() {
         ArrayList<Wonder> wonderList = this.game.getWonderList();
         wonderList.add(new Alexendrie());
-        wonderList.add(new Babylon());
+        wonderList.add(new Babylone());
         wonderList.add(new Ephese());
         wonderList.add(new Gizeh());
         wonderList.add(new Halicarnasse());

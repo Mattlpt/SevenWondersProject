@@ -31,6 +31,7 @@ public class PlayerView implements Subscriber {
     HBox hBoxBottom;
     HBox hBoxTop;
     VBox vBoxMilieu;
+    HBox hBoxHaut;
     HBox hBoxBas;
     VBox wonderBox;
 
@@ -68,17 +69,16 @@ public class PlayerView implements Subscriber {
         this.infoButton = new Button("Button"); 
         this.infoButton.setStyle("-fx-min-width: 180px; -fx-pref-width: 180px; -fx-max-width: 180px; -fx-min-height : 40px; -fx-pref-height : 40px; -fx-max-height : 40px; -fx-cursor : hand; -fx-background-color: #65749d; -fx-text-fill: white;");
 
-        this.leftDrawn = new Image(new File("src/main/Ressources/ressouces 7W 2/cardsTest.png").toURI().toString());
+        this.leftDrawn = new Image(new File("src/main/Ressources/Card/"+this.player.getWonder().getDeckOfCards().getContent().get(0).getColor()+"Card.png").toURI().toString());
         this.leftDrawView = new ImageView(this.leftDrawn);
-
-        //DOCK
-        this.imageDeck = new Image(new File("src/main/Ressources/wonder_alexandriaTEST.png").toURI().toString());
-        this.imageViewDeck = new ImageView(this.imageDeck);
 
         //Drown
         this.rightDrawn = new Image(new File("src/main/Ressources/ressouces 7W 2/cardsTest.png").toURI().toString());
         this.rightDrawView = new ImageView(this.rightDrawn);
 
+        //DOCK
+        this.imageDeck = new Image(new File("src/main/Ressources/wonder_alexandriaTEST.png").toURI().toString());
+        this.imageViewDeck = new ImageView(this.imageDeck);  
 
         //HBox en bas, pour les trois boutons
         this.hBoxBottom = new HBox();
@@ -98,6 +98,9 @@ public class PlayerView implements Subscriber {
         this.wonderBox.setAlignment(Pos.CENTER);
         this.wonderBox.getChildren().add(this.imageViewDeck); 
 
+        this.hBoxHaut = new HBox();
+        this.hBoxHaut.setAlignment(Pos.CENTER);
+        
         //HBox au milieu, pour dec et pioches
         this.hBoxBas = new HBox(); 
         this.hBoxBas.setAlignment(Pos.CENTER);
@@ -105,7 +108,7 @@ public class PlayerView implements Subscriber {
 
         this.vBoxMilieu = new VBox();
         this.vBoxMilieu.setAlignment(Pos.CENTER);
-        this.vBoxMilieu.getChildren().add(this.hBoxBas);
+        this.vBoxMilieu.getChildren().addAll(this.hBoxHaut, this.hBoxBas);
 
         this.layout = new BorderPane();
         this.layout.setCenter(this.vBoxMilieu);

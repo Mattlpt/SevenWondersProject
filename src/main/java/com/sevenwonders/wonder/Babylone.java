@@ -4,9 +4,9 @@ import com.sevenwonders.Card.DeckOfCards;
 
 import javafx.scene.paint.Color;
 
-public class Babylon extends Wonder{
-    public Babylon() {
-        this.name = "Babylon";
+public class Babylone extends Wonder{
+    public Babylone() {
+        this.name = "Babylone";
         this.color = Color.web("336a51"); ; 
         this.parts = new Part[5];
         this.deck = new DeckOfCards(30, true);

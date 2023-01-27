@@ -21,4 +21,8 @@ public class GreyCard extends Card {
     public Resource getResource() {
         return this.resource;
     }
+
+    public String getColor() {
+        return this.color;
+    }
 }
