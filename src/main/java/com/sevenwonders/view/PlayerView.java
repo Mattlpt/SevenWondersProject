@@ -107,6 +107,10 @@ public class PlayerView implements Subscriber {
 
     private HBox inventoryBouclierBox;
 
+    private Image emptyDraw;
+
+    private ImageView emptyDrawView;
+
     public PlayerView(EventHandler<ActionEvent> eventHandler) {
         this.controller = eventHandler;
 
@@ -153,7 +157,7 @@ public class PlayerView implements Subscriber {
         this.pieceImage = new Image(new File("src/main/Ressources/icones/or.png").toURI().toString());
         this.pieceImageView = new ImageView(this.pieceImage); 
 
-        this.bouclierLabel = new Label("Bouclier : ");
+        this.bouclierLabel = new Label(" x ");
         this.bouclierLabel.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: #7f522a;");
         this.bouclierImage = new Image(new File("src/main/Ressources/icones/Bouclier.png").toURI().toString());
         this.bouclierImageView = new ImageView(this.bouclierImage); 
@@ -174,6 +178,9 @@ public class PlayerView implements Subscriber {
         this.mainDraw = new Image(new File("src/main/Ressources/Card/BlueCard.png").toURI().toString());
         this.mainDrawView = new ImageView(this.mainDraw);
 
+        this.emptyDraw = new Image(new File("src/main/Ressources/Card/62.png").toURI().toString());
+        this.emptyDrawView = new ImageView(this.emptyDraw);
+
         //DOCK
         this.imageDeck = new Image(new File("src/main/Ressources/wonder_alexandriaTEST.png").toURI().toString());
         this.imageViewDeck = new ImageView(this.imageDeck);  
@@ -183,6 +190,10 @@ public class PlayerView implements Subscriber {
         VBox mainDrawBox = new VBox();
         mainDrawBox.setAlignment(Pos.TOP_LEFT);
         mainDrawBox.getChildren().add(this.mainDrawView);
+
+        VBox emptyDrawBox = new VBox(); 
+        emptyDrawBox.setAlignment(Pos.TOP_RIGHT);
+        emptyDrawBox.getChildren().add(this.emptyDrawView);
 
         this.hBoxBottom = new HBox();
         this.hBoxBottom.setAlignment(Pos.CENTER);
@@ -242,7 +253,7 @@ public class PlayerView implements Subscriber {
         //HBox au milieu, pour dec et pioches
         this.hBoxBas = new HBox(); 
         this.hBoxBas.setAlignment(Pos.CENTER);
-        this.hBoxBas.getChildren().addAll(mainDrawBox, this.leftDrawView, this.wonderBox, this.rightDrawView);
+        this.hBoxBas.getChildren().addAll(mainDrawBox, this.leftDrawView, this.wonderBox, this.rightDrawView, emptyDrawBox);
 
         this.vBoxMilieu = new VBox();
         this.vBoxMilieu.setAlignment(Pos.CENTER);
